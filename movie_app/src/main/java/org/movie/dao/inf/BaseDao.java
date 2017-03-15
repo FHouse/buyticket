@@ -1,6 +1,7 @@
 package org.movie.dao.inf;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 基础dao接口
@@ -9,7 +10,7 @@ import java.io.Serializable;
 public interface BaseDao<T> {
     /**
      * 添加
-     * @param t 需要添加的实体，实体中必须有需要删除的实体的id
+     * @param t 需要添加的实体
      */
     public void save(T t);
 
@@ -31,5 +32,12 @@ public interface BaseDao<T> {
      * @param id 查询所需的key
      * @return 返回查到的实体数据
      */
-    public T findById(Class<T> entityClass,Serializable id);
+    public T findById(Class<T> entityClass, Serializable id);
+
+    /**
+     *
+     * @param entityClass
+     * @return
+     */
+    public List<T> findAll(Class<T> entityClass);
 }
