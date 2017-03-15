@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("ExecutiveStaffInfoDao")
+@Repository("executiveStaffInfoDao")
 public class ExecutiveStaffInfoDaoImpl extends BaseDaoImpl implements ExecutiveStaffInfoDao {
-    @Override
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfo() {
-        String jpql = "from ExecutiveStaffInfo";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

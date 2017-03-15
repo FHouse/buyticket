@@ -7,6 +7,6 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-public interface FilmInfoService extends BaseService{
-    public List<FilmInfo> findFilmInfo();
+public interface FilmInfoService{
+
 }

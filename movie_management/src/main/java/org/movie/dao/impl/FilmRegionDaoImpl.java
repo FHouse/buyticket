@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("FilmRegionDao")
+@Repository("filmRegionDao")
 public class FilmRegionDaoImpl extends BaseDaoImpl implements FilmRegionDao{
-    @Override
-    public List<FilmRegion> findFilmRegion() {
-        String jpql = "from FilmRegion";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

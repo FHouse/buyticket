@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("AreaDao")
+@Repository("areaDao")
 public class AreaDaoImpl extends BaseDaoImpl implements AreaDao {
-    @Override
-    public List<Area> findArea() {
-        String jpql = "from Area";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

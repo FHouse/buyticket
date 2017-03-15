@@ -1,20 +1,24 @@
 package org.movie.service.impl;
 
+import org.movie.dao.inf.ExecutiveStaffTypeDao;
 import org.movie.dao.inf.FilmCommentDao;
 import org.movie.entity.FilmComment;
 import org.movie.service.inf.FilmCommentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by admin on 2017/3/14.
  */
-@Service( "FilmCommentService" )
+@Service( "filmCommentService" )
+@Transactional
 public class FilmCommentServiceImpl extends BaseServiceImpl implements FilmCommentService{
+    //注入dao
+    @Autowired
+    @Qualifier("filmCommentDao")
     private FilmCommentDao dao;
-    @Override
-    public List<FilmComment> findFilmComment() {
-        return dao.findFilmComment();
-    }
 }

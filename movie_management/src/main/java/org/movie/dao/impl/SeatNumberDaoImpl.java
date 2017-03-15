@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("SeatNumberDao")
+@Repository("seatNumberDao")
 public class SeatNumberDaoImpl extends BaseDaoImpl implements SeatNumberDao{
-    @Override
-    public List<SeatNumber> findSeatNumber() {
-        String jpql = "from SeatNumber";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

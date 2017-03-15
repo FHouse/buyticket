@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("CityDao")
+@Repository("cityDao")
 public class CityDaoImpl extends BaseDaoImpl implements CityDao{
-    @Override
-    public List<City> findCity() {
-        String jpql = "from City";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

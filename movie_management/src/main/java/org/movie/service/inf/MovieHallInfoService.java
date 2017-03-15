@@ -7,6 +7,6 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-public interface MovieHallInfoService extends BaseService{
-    public List<MovieHallInfo> findMovieHallInfo();
+public interface MovieHallInfoService{
+
 }

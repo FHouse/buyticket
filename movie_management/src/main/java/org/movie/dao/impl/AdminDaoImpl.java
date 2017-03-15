@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("AdminDao")
+@Repository("adminDao")
 public class AdminDaoImpl extends BaseDaoImpl implements AdminDao{
-    @Override
-    public List<Admin> findAdmin() {
-        String jpql = "from Admin";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

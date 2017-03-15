@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("OrderInfoDao")
+@Repository("orderInfoDao")
 public class OrderInfoDaoImpl extends BaseDaoImpl implements OrderInfoDao{
-    @Override
-    public List<OrderInfo> findOrderInfo() {
-        String jpql = "from OrderInfo";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

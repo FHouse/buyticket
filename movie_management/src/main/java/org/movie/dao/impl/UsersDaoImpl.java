@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("UsersDao")
+@Repository("usersDao")
 public class UsersDaoImpl extends BaseDaoImpl implements UsersDao{
-    @Override
-    public List<Users> findUsers() {
-        String jpql = "from Users";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

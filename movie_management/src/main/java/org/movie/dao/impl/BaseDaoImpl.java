@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 基础dao实现类
@@ -36,5 +37,11 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     @Override
     public T findById(Class<T> entityClass, Serializable id) {
         return em.find(entityClass,id);
+    }
+
+    @Override
+    public List<T> findAll(Class<T> entityClass) {
+        String jpql = "from "+entityClass.getName();
+        return em.createQuery(jpql).getResultList();
     }
 }

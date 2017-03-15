@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("FilmCommentDao")
+@Repository("filmCommentDao")
 public class FilmCommentDaoImpl extends BaseDaoImpl implements FilmCommentDao{
-    @Override
-    public List<FilmComment> findFilmComment() {
-        String jpql = "from FilmComment";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

@@ -9,11 +9,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Repository("CollectionInfoDao")
+@Repository("collectionInfoDao")
 public class CollectionInfoDaoImpl extends BaseDaoImpl implements CollectionInfoDao{
-    @Override
-    public List<CollectionInfo> findCollectionInfo() {
-        String jpql = "from CollectionInfo";
-        return em.createQuery(jpql).getResultList();
-    }
+
 }

@@ -8,5 +8,5 @@ import java.util.List;
  * Created by admin on 2017/3/14.
  */
 public interface SeatNumberDao extends BaseDao{
-    public List<SeatNumber> findSeatNumber();
+
 }

@@ -1,1 +1,2 @@
-This is util!
+UUID类：通过类中的getUUID方法获取uuid；
+ThisTime类：通过类中的getThisTime方法获取当前系统时间
