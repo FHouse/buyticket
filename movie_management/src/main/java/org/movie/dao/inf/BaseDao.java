@@ -35,9 +35,10 @@ public interface BaseDao<T> {
     public T findById(Class<T> entityClass, Serializable id);
 
     /**
-     *
-     * @param entityClass
-     * @return
+     *查询所有数据
+     * @param entityClass 需要查询的类的Class对象
+     * @return 返回查询数据的集合
      */
     public List<T> findAll(Class<T> entityClass);
+
 }

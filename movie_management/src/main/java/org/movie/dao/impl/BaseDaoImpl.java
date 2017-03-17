@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.io.Serializable;
 import java.util.List;
 
@@ -44,4 +45,5 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         String jpql = "from "+entityClass.getName();
         return em.createQuery(jpql).getResultList();
     }
+
 }

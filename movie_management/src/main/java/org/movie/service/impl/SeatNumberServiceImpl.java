@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service( "seatNumberService" )
 @Transactional
-public class SeatNumberServiceImpl extends BaseServiceImpl implements SeatNumberService{
+public class SeatNumberServiceImpl implements SeatNumberService{
     //注入dao
     @Autowired
     @Qualifier("seatNumberDao")

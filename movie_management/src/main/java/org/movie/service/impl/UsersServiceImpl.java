@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by admin on 2017/3/14.
  */
-@Service( "usersService" )
+@Service("usersService")
 @Transactional
-public class UsersServiceImpl extends BaseServiceImpl implements UsersService{
+public class UsersServiceImpl implements UsersService{
     //注入dao
     @Autowired
     @Qualifier("usersDao")

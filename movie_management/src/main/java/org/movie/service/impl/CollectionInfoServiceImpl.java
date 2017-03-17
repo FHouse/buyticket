@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service( "collectionInfoService" )
 @Transactional
-public class CollectionInfoServiceImpl extends BaseServiceImpl implements CollectionInfoService{
+public class CollectionInfoServiceImpl implements CollectionInfoService{
 
     //注入dao
     @Autowired

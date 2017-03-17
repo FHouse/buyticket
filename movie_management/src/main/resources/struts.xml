@@ -5,5 +5,84 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <!-- 城市请求处理 -->
+    <package name="city" extends="json-default">
+        <action name="addCity" class="cityAction" method="addCitys">
+            <result type="redirectAction">findCitys</result>
+        </action>
 
+        <action name="deleteCity" class="cityAction" method="deleteCity">
+            <result type="redirectAction">findCitys</result>
+        </action>
+
+        <action name="findCitys" class="cityAction" method="findCitys">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+
+        <action name="updateCity" class="cityAction" method="updateCity">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 区（县）请求处理 -->
+    <package name="area" extends="json-default">
+        <action name="addArea" class="areaAction" method="addArea">
+            <result type="redirectAction">findAreas</result>
+        </action>
+
+        <action name="deleteArea" class="areaAction" method="deleteArea">
+            <result type="redirectAction">findAreas</result>
+        </action>
+
+        <action name="findAreas" class="areaAction" method="findAreas">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+
+        <action name="updateArea" class="areaAction" method="updateArea">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="findAreaByCityId" class="areaAction" method="findAreaByCityId">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 影城请求处理 -->
+    <package name="filmHouseInfo" extends="json-default">
+        <action name="addFilmHouseInfo" class="filmHouseInfoAction" method="addFilmHouseInfo">
+            <result type="redirectAction">findFilmHouseInfos</result>
+        </action>
+
+        <action name="findFilmHouseInfos" class="filmHouseInfoAction" method="findFilmHouseInfos">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+
+        <action name="deleteFilmHouseInfo" class="filmHouseInfoAction" method="deleteFilmHouseInfo">
+            <result type="redirectAction">findFilmHouseInfos</result>
+        </action>
+
+        <action name="findFilmHouseInfoByAreaId" class="filmHouseInfoAction" method="findFilmHouseInfoByAreaId">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+
+        <action name="updateFilmHouseInfo" class="filmHouseInfoAction" method="updateFilmHouseInfo">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+    </package>
 </struts>

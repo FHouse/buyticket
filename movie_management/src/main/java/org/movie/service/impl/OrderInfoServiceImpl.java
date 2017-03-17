@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service( "orderInfoService" )
 @Transactional
-public class OrderInfoServiceImpl extends BaseServiceImpl implements OrderInfoService{
+public class OrderInfoServiceImpl implements OrderInfoService{
     //注入dao
     @Autowired
     @Qualifier("orderInfoDao")

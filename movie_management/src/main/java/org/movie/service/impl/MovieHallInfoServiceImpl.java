@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service( "movieHallInfoService" )
 @Transactional
-public class MovieHallInfoServiceImpl extends BaseServiceImpl implements MovieHallInfoService{
+public class MovieHallInfoServiceImpl implements MovieHallInfoService{
     //注入dao
     @Autowired
     @Qualifier("movieHallInfoDao")

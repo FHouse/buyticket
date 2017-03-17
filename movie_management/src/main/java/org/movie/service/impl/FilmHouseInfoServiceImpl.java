@@ -2,8 +2,10 @@ package org.movie.service.impl;
 
 import org.movie.dao.inf.ExecutiveStaffTypeDao;
 import org.movie.dao.inf.FilmHouseInfoDao;
+import org.movie.entity.Area;
 import org.movie.entity.FilmHouseInfo;
 import org.movie.service.inf.FilmHouseInfoService;
+import org.movie.util.CheckVer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,36 @@ import java.util.List;
  */
 @Service( "filmHouseInfoService" )
 @Transactional
-public class FilmHouseInfoServiceImpl extends BaseServiceImpl implements FilmHouseInfoService{
+public class FilmHouseInfoServiceImpl implements FilmHouseInfoService{
     //注入dao
     @Autowired
     @Qualifier("filmHouseInfoDao")
     private FilmHouseInfoDao dao;
+
+    @Override
+    public void add(FilmHouseInfo filmHouseInfo) {
+        dao.save(filmHouseInfo);
+    }
+
+    @Override
+    public void delete(FilmHouseInfo filmHouseInfo) {
+        dao.delete(filmHouseInfo);
+    }
+
+    @Override
+    public List<FilmHouseInfo> findFilmHouseInfos() {
+        return dao.findAll(FilmHouseInfo.class);
+    }
+
+    @Override
+    public List<FilmHouseInfo> findFilmHouseInfoByAreaId(Area area) {
+        return dao.findFilmHouseInfoByAreaId(area);
+    }
+
+    @Override
+    public void update(FilmHouseInfo filmHouseInfo) throws Exception {
+        FilmHouseInfo filmHouseInfo1 = (FilmHouseInfo) dao.findById(FilmHouseInfo.class,filmHouseInfo.getFilmHouseId());
+        filmHouseInfo1 = CheckVer.checkVer(filmHouseInfo1,filmHouseInfo,FilmHouseInfo.class);
+        dao.update(filmHouseInfo1);
+    }
 }
