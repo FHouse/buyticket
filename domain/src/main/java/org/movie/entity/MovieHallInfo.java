@@ -1,6 +1,8 @@
 package org.movie.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 影厅信息
@@ -19,6 +21,8 @@ public class MovieHallInfo {
     private int ver = 1;
     //所在的影院
     private FilmHouseInfo filmHouseInfos;
+    //一对多关联场次
+    private Set<FilmScreenings> filmScreenings = new HashSet<>();
 
     @Id
     public String getMovieHallInfoId() {
@@ -59,5 +63,13 @@ public class MovieHallInfo {
     }
     public void setFilmHouseInfos(FilmHouseInfo filmHouseInfos) {
         this.filmHouseInfos = filmHouseInfos;
+    }
+
+    @OneToMany(mappedBy = "movieHallInfo")
+    public Set<FilmScreenings> getFilmScreenings() {
+        return filmScreenings;
+    }
+    public void setFilmScreenings(Set<FilmScreenings> filmScreenings) {
+        this.filmScreenings = filmScreenings;
     }
 }

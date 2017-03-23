@@ -79,10 +79,4 @@ public class AreaAction {
         }
         return "success";
     }
-
-    //删除区（县）信息
-    public String deleteArea(){
-        service.delete(area);
-        return "success";
-    }
 }

@@ -52,8 +52,4 @@ public class AreaServiceImpl implements AreaService{
         }
     }
 
-    @Override
-    public void delete(Area area) {
-        dao.delete(area);
-    }
 }

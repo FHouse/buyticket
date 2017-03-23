@@ -1,9 +1,7 @@
 package org.movie.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -21,6 +19,8 @@ public class FilmRegion {
     private String filmRegionState = "禁用";
     //乐观锁版本号
     private int ver = 1;
+    //一对多关联电影
+    private Set<FilmInfo> films = new HashSet<>();
 
     @Id
     public String getFilmRegionId() {
@@ -52,5 +52,13 @@ public class FilmRegion {
     }
     public void setVer(int ver) {
         this.ver = ver;
+    }
+
+    @OneToMany(mappedBy = "filmRegion")
+    public Set<FilmInfo> getFilms() {
+        return films;
+    }
+    public void setFilms(Set<FilmInfo> films) {
+        this.films = films;
     }
 }

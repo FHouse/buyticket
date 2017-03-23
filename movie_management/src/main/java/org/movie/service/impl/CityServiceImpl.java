@@ -2,7 +2,10 @@ package org.movie.service.impl;
 
 import org.movie.dao.inf.AreaDao;
 import org.movie.dao.inf.CityDao;
+import org.movie.dao.inf.FilmHouseInfoDao;
+import org.movie.entity.Area;
 import org.movie.entity.City;
+import org.movie.entity.FilmHouseInfo;
 import org.movie.service.inf.CityService;
 import org.movie.util.CheckVer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,11 @@ public class CityServiceImpl implements CityService{
     @Qualifier("areaDao")
     private AreaDao areaDao;
 
+    //注入影城dao
+    @Autowired
+    @Qualifier("filmHouseInfoDao")
+    private FilmHouseInfoDao filmHouseInfoDao;
+
     @Override
     public void add(City city) {
         dao.save(city);
@@ -46,9 +54,4 @@ public class CityServiceImpl implements CityService{
         dao.update(city1);
     }
 
-    @Override
-    public void delete(City city) {
-        areaDao.deleteAreaByCityId(city);
-        dao.delete(city);
-    }
 }

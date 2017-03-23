@@ -2,6 +2,7 @@ package org.movie.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -41,6 +42,16 @@ public class FilmInfo {
     private FilmRegion filmRegion;
     //电影上架状态
     private String filmState;
+    //一对多关联想看记录
+    private Set<CollectionInfo> collections = new HashSet<>();
+    //一对多关联演职人员
+    private Set<ExecutiveStaffInfo> executiveStaffs = new HashSet<>();
+    //电影图集
+    private Set<FilmAtlas> filmAtlases = new HashSet<>();
+    //电影评论
+    private Set<FilmComment> filmComments = new HashSet<>();
+    //一对多关联场次
+    private Set<FilmScreenings> filmScreeningses = new HashSet<>();
 
     @Id
     public String getFilmId() {
@@ -165,5 +176,45 @@ public class FilmInfo {
     }
     public void setFilmState(String filmState) {
         this.filmState = filmState;
+    }
+
+    @OneToMany(mappedBy = "filmInfo")
+    public Set<CollectionInfo> getCollections() {
+        return collections;
+    }
+    public void setCollections(Set<CollectionInfo> collections) {
+        this.collections = collections;
+    }
+
+    @OneToMany(mappedBy = "filmInfo")
+    public Set<ExecutiveStaffInfo> getExecutiveStaffs() {
+        return executiveStaffs;
+    }
+    public void setExecutiveStaffs(Set<ExecutiveStaffInfo> executiveStaffs) {
+        this.executiveStaffs = executiveStaffs;
+    }
+
+    @OneToMany(mappedBy = "filmInfo")
+    public Set<FilmAtlas> getFilmAtlases() {
+        return filmAtlases;
+    }
+    public void setFilmAtlases(Set<FilmAtlas> filmAtlases) {
+        this.filmAtlases = filmAtlases;
+    }
+
+    @OneToMany(mappedBy = "filmInfo")
+    public Set<FilmComment> getFilmComments() {
+        return filmComments;
+    }
+    public void setFilmComments(Set<FilmComment> filmComments) {
+        this.filmComments = filmComments;
+    }
+
+    @OneToMany(mappedBy = "filmInfo")
+    public Set<FilmScreenings> getFilmScreeningses() {
+        return filmScreeningses;
+    }
+    public void setFilmScreeningses(Set<FilmScreenings> filmScreeningses) {
+        this.filmScreeningses = filmScreeningses;
     }
 }

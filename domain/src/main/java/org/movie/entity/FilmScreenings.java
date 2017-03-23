@@ -2,6 +2,8 @@ package org.movie.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 电影场次
@@ -20,6 +22,8 @@ public class FilmScreenings {
     private MovieHallInfo movieHallInfo;
     //播放的电影
     private FilmInfo filmInfo;
+    //一对多关联订单
+    private Set<OrderInfo> orders = new HashSet<>();
 
     @Id
     public String getFilmScreeningsId() {
@@ -61,5 +65,13 @@ public class FilmScreenings {
     }
     public void setFilmInfo(FilmInfo filmInfo) {
         this.filmInfo = filmInfo;
+    }
+
+    @OneToMany(mappedBy = "filmScreenings")
+    public Set<OrderInfo> getOrders() {
+        return orders;
+    }
+    public void setOrders(Set<OrderInfo> orders) {
+        this.orders = orders;
     }
 }

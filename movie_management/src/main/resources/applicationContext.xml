@@ -47,7 +47,7 @@
         <!-- 在控制台显示sql语句 -->
         <property name="showSql" value="true" />
         <!-- 是否自动执行DDL语句，（自动建表） -->
-        <property name="generateDdl" value="false" />
+        <property name="generateDdl" value="true" />
     </bean>
     <!-- 配置实体管理器,spring会依据这个工厂创建并注入一个实体管理器EntityManager,
          创建出来的EntityManager是由Spring容器管理的，并且会参与到Spring的事务当中，它是线程安全的-->

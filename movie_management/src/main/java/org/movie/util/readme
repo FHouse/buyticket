@@ -1,2 +1,6 @@
-UUID类：通过类中的getUUID方法获取uuid；
-ThisTime类：通过类中的getThisTime方法获取当前系统时间
+1）UUID类：通过类中的getUUID方法获取uuid；
+2）ThisTime类：通过类中的getThisTime方法获取当前系统时间
+3）CheckVer类：通过类中的checkVer方法校验乐观锁版本号，该方法有三个参数，分别为：
+    param1：数据库中的数据
+    param2: 请求中的数据
+    param3：类的Class对象；

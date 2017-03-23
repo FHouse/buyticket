@@ -11,10 +11,6 @@
             <result type="redirectAction">findCitys</result>
         </action>
 
-        <action name="deleteCity" class="cityAction" method="deleteCity">
-            <result type="redirectAction">findCitys</result>
-        </action>
-
         <action name="findCitys" class="cityAction" method="findCitys">
             <result type="json">
                 <param name="root">list</param>
@@ -31,10 +27,6 @@
     <!-- 区（县）请求处理 -->
     <package name="area" extends="json-default">
         <action name="addArea" class="areaAction" method="addArea">
-            <result type="redirectAction">findAreas</result>
-        </action>
-
-        <action name="deleteArea" class="areaAction" method="deleteArea">
             <result type="redirectAction">findAreas</result>
         </action>
 
@@ -80,6 +72,35 @@
         </action>
 
         <action name="updateFilmHouseInfo" class="filmHouseInfoAction" method="updateFilmHouseInfo">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 影城用户请求处理 -->
+    <package name="filmHouseUserInfo" extends="json-default">
+        <action name="addFilmHouseUser" class="filmHouseUserInfoAction" method="addFilmHouseUser">
+            <result type="redirectAction">findFilmHouseUsers</result>
+        </action>
+
+        <action name="deleteFilmHouseUser" class="filmHouseUserInfoAction" method="deleteFilmHouseUser">
+            <result type="redirectAction">findFilmHouseUsers</result>
+        </action>
+
+        <action name="findFilmHouseUsers" class="filmHouseUserInfoAction" method="findFilmHouseUsers">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+
+        <action name="filmHouseUserLogin" class="filmHouseUserInfoAction" method="filmHouseUserLogin">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="updateFilmHouseUser" class="filmHouseUserInfoAction" method="updateFilmHouseUser">
             <result type="json">
                 <param name="root">message</param>
             </result>

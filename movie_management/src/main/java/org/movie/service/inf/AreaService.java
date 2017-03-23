@@ -38,11 +38,4 @@ public interface AreaService{
      */
     public void update(Area area) throws Exception;
 
-    /**
-     * 删除区（县）信息
-     * @param area 需要删除的区（县）的信息
-     * @return 返回删除结果
-     */
-    public void delete(Area area);
-
 }

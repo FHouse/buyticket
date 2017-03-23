@@ -1,9 +1,8 @@
 package org.movie.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 演职人员类型实体类
@@ -18,6 +17,8 @@ public class ExecutiveStaffType {
     private String typeName;
     //乐观锁版本号
     private int ver = 1;
+    //多对多关联演职人员信息
+    private Set<ExecutiveStaffInfo> executiveStaffs = new HashSet<>();
 
     @Id
     public String getExecutiveStaffTypeId() {
@@ -41,5 +42,13 @@ public class ExecutiveStaffType {
     }
     public void setVer(int ver) {
         this.ver = ver;
+    }
+
+    @ManyToMany(mappedBy = "executiveStaffTypes")
+    public Set<ExecutiveStaffInfo> getExecutiveStaffs() {
+        return executiveStaffs;
+    }
+    public void setExecutiveStaffs(Set<ExecutiveStaffInfo> executiveStaffs) {
+        this.executiveStaffs = executiveStaffs;
     }
 }

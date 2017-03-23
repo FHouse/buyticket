@@ -71,11 +71,6 @@ public class CityAction {
         return "success";
     }
 
-    //删除城市信息
-    public String deleteCity(){
-        service.delete(city);
-        return "success";
-    }
 
     //修改城市信息
     public String updateCity(){

@@ -1,9 +1,8 @@
 package org.movie.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 普通用户实体类
@@ -22,6 +21,12 @@ public class Users {
     private String userTel;
     //乐观锁版本号
     private int ver = 1;
+    //一对多关联想看记录
+    private Set<CollectionInfo> collections = new HashSet<>();
+    //一对多关联评论信息
+    private Set<FilmComment> filmComments = new HashSet<>();
+    //一对多关联订单
+    private Set<OrderInfo> orders = new HashSet<>();
 
     @Id
     public String getUsersId() {
@@ -61,5 +66,29 @@ public class Users {
     }
     public void setVer(int ver) {
         this.ver = ver;
+    }
+
+    @OneToMany(mappedBy = "users")
+    public Set<CollectionInfo> getCollections() {
+        return collections;
+    }
+    public void setCollections(Set<CollectionInfo> collections) {
+        this.collections = collections;
+    }
+
+    @OneToMany(mappedBy = "users")
+    public Set<FilmComment> getFilmComments() {
+        return filmComments;
+    }
+    public void setFilmComments(Set<FilmComment> filmComments) {
+        this.filmComments = filmComments;
+    }
+
+    @OneToMany(mappedBy = "users")
+    public Set<OrderInfo> getOrders() {
+        return orders;
+    }
+    public void setOrders(Set<OrderInfo> orders) {
+        this.orders = orders;
     }
 }

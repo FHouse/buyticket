@@ -21,12 +21,4 @@ public class AreaDaoImpl extends BaseDaoImpl implements AreaDao {
         query.setParameter(1,city.getCityId());
         return query.getResultList();
     }
-
-    @Override
-    public void deleteAreaByCityId(City city) {
-        String sql = "delete from area where cityId = ?";
-        Query query = em.createNativeQuery(sql);
-        query.setParameter(1,city.getCityId());
-        query.executeUpdate();
-    }
 }

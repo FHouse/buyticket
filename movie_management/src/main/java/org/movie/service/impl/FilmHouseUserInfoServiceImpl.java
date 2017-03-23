@@ -2,6 +2,7 @@ package org.movie.service.impl;
 
 import org.movie.dao.inf.ExecutiveStaffTypeDao;
 import org.movie.dao.inf.FilmHouseUserInfoDao;
+import org.movie.entity.FilmHouseInfo;
 import org.movie.entity.FilmHouseUserInfo;
 import org.movie.service.inf.FilmHouseUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,45 @@ public class FilmHouseUserInfoServiceImpl implements FilmHouseUserInfoService{
     @Autowired
     @Qualifier("filmHouseUserInfoDao")
     private FilmHouseUserInfoDao dao;
+
+    @Override
+    public void addFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) {
+        dao.save(filmHouseUserInfo);
+    }
+
+    @Override
+    public void deleteFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) {
+        dao.delete(filmHouseUserInfo);
+    }
+
+    @Override
+    public List<FilmHouseUserInfo> findFilmHouseUsers() {
+        return dao.findAll(FilmHouseUserInfo.class);
+    }
+
+    @Override
+    public String updateFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) {
+        try{
+            dao.update(filmHouseUserInfo);
+            return "修改成功！";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "修改失败！";
+        }
+
+    }
+
+    @Override
+    public String filmHouseUserLogin(FilmHouseUserInfo filmHouseUserInfo) {
+        try{
+            FilmHouseUserInfo filmHouseUserInfo1 = dao.findFilmHouseUserByName(filmHouseUserInfo);
+            if((filmHouseUserInfo1 != null) && filmHouseUserInfo.getCinemaUserPassword().equals(filmHouseUserInfo1.getCinemaUserPassword())){
+                return "loginSuccess";
+            }
+            return "loginFail";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "loginFail";
+        }
+    }
 }

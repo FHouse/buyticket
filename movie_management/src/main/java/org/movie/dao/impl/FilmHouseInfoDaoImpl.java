@@ -21,4 +21,12 @@ public class FilmHouseInfoDaoImpl extends BaseDaoImpl implements FilmHouseInfoDa
         query.setParameter(1,area.getAreaId());
         return query.getResultList();
     }
+
+    @Override
+    public void deleteFilmHouseInfoByAreaId(Area area) {
+        String sql = "delete from filmhouseinfo where areaid = ?";
+        Query query = em.createNativeQuery(sql);
+        query.setParameter(1,area.getAreaId());
+        query.executeUpdate();
+    }
 }

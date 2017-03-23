@@ -1,9 +1,8 @@
 package org.movie.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 市级单位实体类
@@ -18,6 +17,8 @@ public class City {
     private String cityName;
     //乐观锁版本号
     private int ver = 1;
+    //一对多关联区（县）
+    private Set<Area> areas = new HashSet<>();
 
     @Id
     public String getCityId() {return cityId;}
@@ -39,5 +40,13 @@ public class City {
     }
     public void setVer(int ver) {
         this.ver = ver;
+    }
+
+    @OneToMany(mappedBy = "city")
+    public Set<Area> getAreas() {
+        return areas;
+    }
+    public void setAreas(Set<Area> areas) {
+        this.areas = areas;
     }
 }

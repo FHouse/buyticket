@@ -30,10 +30,4 @@ public interface CityService{
      */
     public void update(City city) throws Exception;
 
-    /**
-     * 删除城市信息
-     * @param city 需要删除的城市的城市信息
-     * @return 返回删除结果
-     */
-    public void delete(City city);
 }
