@@ -150,4 +150,37 @@
             </result>
         </action>
     </package>
+
+    <!-- 管理员请求操作 -->
+    <package name="admin" extends="json-default">
+        <action name="addAdmin" class="adminAction" method="addAdmin">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="deleteAdmin" class="adminAction" method="deleteAdmin">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="updateAdmin" class="adminAction" method="updateAdmin">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="findAdmins" class="adminAction" method="findAdmins">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+
+        <action name="adminLogin" class="adminAction" method="addAdmin">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+    </package>
 </struts>

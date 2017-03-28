@@ -5,6 +5,7 @@ import org.movie.dao.inf.FilmHouseUserInfoDao;
 import org.movie.entity.FilmHouseInfo;
 import org.movie.entity.FilmHouseUserInfo;
 import org.movie.service.inf.FilmHouseUserInfoService;
+import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class FilmHouseUserInfoServiceImpl implements FilmHouseUserInfoService{
 
     @Override
     public void addFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) {
+        filmHouseUserInfo.setFilmHouseUserId(UUIDUtil.getUUID());
         dao.save(filmHouseUserInfo);
     }
 
@@ -55,7 +57,7 @@ public class FilmHouseUserInfoServiceImpl implements FilmHouseUserInfoService{
         try{
             FilmHouseUserInfo filmHouseUserInfo1 = dao.findFilmHouseUserByName(filmHouseUserInfo);
             if((filmHouseUserInfo1 != null) && filmHouseUserInfo.getCinemaUserPassword().equals(filmHouseUserInfo1.getCinemaUserPassword())){
-                return "loginSuccess";
+                return filmHouseUserInfo1.getCinemaUserName();
             }
             return "loginFail";
         }catch(Exception e){

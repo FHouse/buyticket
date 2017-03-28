@@ -8,6 +8,7 @@ import org.movie.entity.City;
 import org.movie.entity.FilmHouseInfo;
 import org.movie.service.inf.CityService;
 import org.movie.util.CheckVer;
+import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,7 @@ public class CityServiceImpl implements CityService{
 
     @Override
     public void add(City city) {
+        city.setCityId(UUIDUtil.getUUID());
         dao.save(city);
     }
 

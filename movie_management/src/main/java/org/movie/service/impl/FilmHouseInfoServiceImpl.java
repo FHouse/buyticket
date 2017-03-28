@@ -6,6 +6,7 @@ import org.movie.entity.Area;
 import org.movie.entity.FilmHouseInfo;
 import org.movie.service.inf.FilmHouseInfoService;
 import org.movie.util.CheckVer;
+import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class FilmHouseInfoServiceImpl implements FilmHouseInfoService{
 
     @Override
     public void add(FilmHouseInfo filmHouseInfo) {
+        filmHouseInfo.setFilmHouseId(UUIDUtil.getUUID());
         dao.save(filmHouseInfo);
     }
 

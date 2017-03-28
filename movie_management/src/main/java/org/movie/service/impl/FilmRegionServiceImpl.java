@@ -5,6 +5,7 @@ import org.movie.dao.inf.FilmRegionDao;
 import org.movie.entity.FilmRegion;
 import org.movie.service.inf.FilmRegionService;
 import org.movie.util.CheckVer;
+import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class FilmRegionServiceImpl implements FilmRegionService{
 
     @Override
     public void addFilmRegion(FilmRegion filmRegion) {
+        filmRegion.setFilmRegionId(UUIDUtil.getUUID());
         dao.save(filmRegion);
     }
 

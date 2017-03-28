@@ -4,6 +4,7 @@ import org.movie.dao.inf.FilmYearsDao;
 import org.movie.entity.FilmYears;
 import org.movie.service.inf.FilmYearsService;
 import org.movie.util.CheckVer;
+import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class FilmYearsServiceImpl implements FilmYearsService {
 
     @Override
     public void addFilmYears(FilmYears filmYears) {
+        filmYears.setFilmYearsId(UUIDUtil.getUUID());
         dao.save(filmYears);
     }
 

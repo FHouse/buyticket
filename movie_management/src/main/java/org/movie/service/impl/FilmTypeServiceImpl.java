@@ -4,6 +4,7 @@ import org.movie.dao.inf.FilmTypeDao;
 import org.movie.entity.FilmType;
 import org.movie.service.inf.FilmTypeService;
 import org.movie.util.CheckVer;
+import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class FilmTypeServiceImpl implements FilmTypeService {
 
     @Override
     public void addFilmType(FilmType filmType) {
+        filmType.setFilmTypeId(UUIDUtil.getUUID());
         dao.save(filmType);
     }
 

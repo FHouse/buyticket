@@ -9,4 +9,10 @@ import java.util.List;
  */
 public interface AdminDao extends BaseDao{
 
+    /**
+     * 根据用户名查询该用户信息
+     * @param admin
+     * @return
+     */
+    public Admin findAdminByName(Admin admin);
 }

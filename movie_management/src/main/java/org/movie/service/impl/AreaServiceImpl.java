@@ -6,6 +6,7 @@ import org.movie.entity.Area;
 import org.movie.entity.City;
 import org.movie.service.inf.AreaService;
 import org.movie.util.CheckVer;
+import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ public class AreaServiceImpl implements AreaService{
 
     @Override
     public void addArea(Area area) {
+        area.setAreaId(UUIDUtil.getUUID());
         dao.save(area);
     }
 

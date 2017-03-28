@@ -1,5 +1,6 @@
 package org.movie.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import org.movie.entity.FilmHouseUserInfo;
 import org.movie.service.inf.FilmHouseUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,9 @@ public class FilmHouseUserInfoAction {
     //影城用户登陆
     public String filmHouseUserLogin(){
         message = service.filmHouseUserLogin(filmHouseUserInfo);
+        if(!message.equals("loginFail")){
+            ActionContext.getContext().getSession().put("filmHouseUserName",message);
+        }
         return "success";
     }
 
