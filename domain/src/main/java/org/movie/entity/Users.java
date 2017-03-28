@@ -17,6 +17,8 @@ public class Users {
     private String userName;
     //密码
     private String userPassword;
+    //头像
+    private String userPhoto;
     //手机号
     private String userTel;
     //乐观锁版本号
@@ -51,6 +53,10 @@ public class Users {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
+    @Column
+    public String getUserPhoto() {return userPhoto;}
+    public void setUserPhoto(String userPhoto) {this.userPhoto = userPhoto;}
 
     @Column
     public String getUserTel() {
