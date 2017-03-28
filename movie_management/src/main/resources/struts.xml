@@ -8,7 +8,7 @@
     <!-- 城市请求处理 -->
     <package name="city" extends="json-default">
         <action name="addCity" class="cityAction" method="addCitys">
-            <result type="redirectAction">findCitys</result>
+            <result type="chain">findCitys</result>
         </action>
 
         <action name="findCitys" class="cityAction" method="findCitys">
@@ -27,7 +27,7 @@
     <!-- 区（县）请求处理 -->
     <package name="area" extends="json-default">
         <action name="addArea" class="areaAction" method="addArea">
-            <result type="redirectAction">findAreas</result>
+            <result type="chain">findAreas</result>
         </action>
 
         <action name="findAreas" class="areaAction" method="findAreas">
@@ -52,7 +52,7 @@
     <!-- 影城请求处理 -->
     <package name="filmHouseInfo" extends="json-default">
         <action name="addFilmHouseInfo" class="filmHouseInfoAction" method="addFilmHouseInfo">
-            <result type="redirectAction">findFilmHouseInfos</result>
+            <result type="chain">findFilmHouseInfos</result>
         </action>
 
         <action name="findFilmHouseInfos" class="filmHouseInfoAction" method="findFilmHouseInfos">
@@ -62,7 +62,7 @@
         </action>
 
         <action name="deleteFilmHouseInfo" class="filmHouseInfoAction" method="deleteFilmHouseInfo">
-            <result type="redirectAction">findFilmHouseInfos</result>
+            <result type="chain">findFilmHouseInfos</result>
         </action>
 
         <action name="findFilmHouseInfoByAreaId" class="filmHouseInfoAction" method="findFilmHouseInfoByAreaId">
@@ -81,11 +81,11 @@
     <!-- 影城用户请求处理 -->
     <package name="filmHouseUserInfo" extends="json-default">
         <action name="addFilmHouseUser" class="filmHouseUserInfoAction" method="addFilmHouseUser">
-            <result type="redirectAction">findFilmHouseUsers</result>
+            <result type="chain">findFilmHouseUsers</result>
         </action>
 
         <action name="deleteFilmHouseUser" class="filmHouseUserInfoAction" method="deleteFilmHouseUser">
-            <result type="redirectAction">findFilmHouseUsers</result>
+            <result type="chain">findFilmHouseUsers</result>
         </action>
 
         <action name="findFilmHouseUsers" class="filmHouseUserInfoAction" method="findFilmHouseUsers">
@@ -103,6 +103,50 @@
         <action name="updateFilmHouseUser" class="filmHouseUserInfoAction" method="updateFilmHouseUser">
             <result type="json">
                 <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="findFilmHouseUserByFilmHouseId" class="filmHouseUserInfoAction" method="findFilmHouseUserByFilmHouseId">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 电影类型请求处理 -->
+    <package name="filmType" extends="json-default">
+        <action name="addFilmType" class="filmTypeAction" method="addFilmType">
+            <result type="chain">findFilmTypes</result>
+        </action>
+
+        <action name="updateFilmType" class="filmTypeAction" method="updateFilmType">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="findFilmTypes" class="filmTypeAction" method="findFilmTypes">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 电影年代请求处理 -->
+    <package name="filmRegion" extends="json-default">
+        <action name="addFilmRegion" class="filmRegionAction" method="addFilmRegion">
+            <result type="chain">findFilmRegions</result>
+        </action>
+
+        <action name="updateFilmRegion" class="filmRegionAction" method="updateFilmRegion">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="findFilmRegions" class="filmRegionAction" method="findFilmRegions">
+            <result type="json">
+                <param name="root">list</param>
             </result>
         </action>
     </package>

@@ -65,7 +65,7 @@ public class FilmHouseUserInfoAction {
         return "success";
     }
 
-    //查询所有银城用户
+    //查询所有影城用户
     public String findFilmHouseUsers(){
         list = service.findFilmHouseUsers();
         return "success";
@@ -74,6 +74,12 @@ public class FilmHouseUserInfoAction {
     //影城用户登陆
     public String filmHouseUserLogin(){
         message = service.filmHouseUserLogin(filmHouseUserInfo);
+        return "success";
+    }
+
+    //根据影城id查询影城下所有用户信息
+    public String findFilmHouseUserByFilmHouseId(){
+        list = service.findFilmHouseUserByFilmHouseId(filmHouseUserInfo.getFilmHouseInfo());
         return "success";
     }
 }

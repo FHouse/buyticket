@@ -1,5 +1,6 @@
 package org.movie.service.inf;
 
+import org.movie.entity.FilmHouseInfo;
 import org.movie.entity.FilmHouseUserInfo;
 
 import java.util.List;
@@ -41,4 +42,10 @@ public interface FilmHouseUserInfoService{
      */
     public String filmHouseUserLogin(FilmHouseUserInfo filmHouseUserInfo);
 
+    /**
+     * 根据影城id查询该影城所有的影城用户
+     * @param filmHouseInfo
+     * @return
+     */
+    public List<FilmHouseUserInfo> findFilmHouseUserByFilmHouseId(FilmHouseInfo filmHouseInfo);
 }

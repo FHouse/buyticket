@@ -63,4 +63,9 @@ public class FilmHouseUserInfoServiceImpl implements FilmHouseUserInfoService{
             return "loginFail";
         }
     }
+
+    @Override
+    public List<FilmHouseUserInfo> findFilmHouseUserByFilmHouseId(FilmHouseInfo filmHouseInfo) {
+        return dao.findFilmHouseUsersByFilmHouseId(filmHouseInfo);
+    }
 }
