@@ -5,5 +5,23 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-
+    <package name="city" extends="json-default">
+        <action name="findCitys" class="cityAction" method="findCitys">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+    </package>
+    <package name="area" extends="json-default">
+        <action name="findAreas" class="areaAction" method="findAreas">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+        <action name="findAreaByCityId" class="areaAction" method="findAreaByCityId">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+    </package>
 </struts>
