@@ -151,7 +151,7 @@
         </action>
     </package>
 
-    <!-- 管理员请求操作 -->
+    <!-- 管理员请求处理 -->
     <package name="admin" extends="json-default">
         <action name="addAdmin" class="adminAction" method="addAdmin">
             <result type="json">
@@ -180,6 +180,105 @@
         <action name="adminLogin" class="adminAction" method="addAdmin">
             <result type="json">
                 <param name="root">message</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 用户请求处理 -->
+    <package name="users" extends="json-default">
+        <action name="addUser" class="usersAction" method="addUser">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="deleteUser" class="usersAction" method="deleteUser">
+            <result type="chain">findUsers</result>
+        </action>
+
+        <action name="updateUser" class="usersAction" method="updateUser">
+            <result type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="findUsers" class="usersAction" method="findUsers">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 演职人员类型请求处理 -->
+    <package name="executiveStaffType" extends="json-default">
+        <action name="addExecutiveStaffType" class="executiveStaffTypeAction" method="addExecutiveStaffType">
+            <exception-mapping exception="org.movie.exception.ExecutiveStaffTypeException" result="addException" />
+            <result type="chain">findExecutiveStaffTypes</result>
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="deleteExecutiveStaffType" class="executiveStaffTypeAction" method="deleteExecutiveStaffType">
+            <exception-mapping exception="org.movie.exception.ExecutiveStaffTypeException" result="deleteException" />
+            <result type="json">findExecutiveStaffTypes</result>
+            <result name="deleteException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="updateExecutiveStaffType" class="executiveStaffTypeAction" method="updateExecutiveStaffType">
+            <exception-mapping exception="org.movie.exception.ExecutiveStaffTypeException" result="updateException" />
+            <result type="chain">findExecutiveStaffTypes</result>
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="findExecutiveStaffTypes" class="executiveStaffTypeAction" method="findExecutiveStaffTypes">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 演职人员请求处理 -->
+    <package name="executiveStaffInfo" extends="json-default">
+        <action name="addExecutiveStaff" class="executiveStaffInfoAction" method="addExecutiveStaffInfo">
+            <exception-mapping exception="org.movie.exception.ExecutiveStaffInfoException" result="addException" />
+            <result type="json" name="addException">
+                <param name="root">exception</param>
+            </result>
+            <result type="chain">findExecutiveStaffs</result>
+        </action>
+
+        <action name="deleteExecutiveStaffById" class="executiveStaffInfoAction" method="deleteExecutiveStaffInfoById">
+            <exception-mapping exception="org.movie.exception.ExecutiveStaffInfoException" result="deleteException" />
+            <result type="json" name="deleteException">
+                <param name="root">exception</param>
+            </result>
+            <result type="chain">findExecutiveStaffs</result>
+        </action>
+
+        <action name="deleteExecutiveStaffByFilmId" class="executiveStaffInfoAction" method="deleteExecutiveStaffInfoByFilmId">
+            <exception-mapping exception="org.movie.exception.ExecutiveStaffInfoException" result="deleteException" />
+            <result type="json" name="deleteException">
+                <param name="root">exception</param>
+            </result>
+            <result type="chain">findExecutiveStaffs</result>
+        </action>
+
+        <action name="updateExecutiveStaff" class="executiveStaffInfoAction" method="updateExecutiveStaffInfo">
+            <exception-mapping exception="org.movie.exception.ExecutiveStaffInfoException" result="updateException" />
+            <result type="json" name="updateException">
+                <param name="root">exception</param>
+            </result>
+            <result type="chain">findExecutiveStaffs</result>
+        </action>
+
+        <action name="findExecutiveStaffs" class="executiveStaffInfoAction" method="findExecutiveStaffInfos">
+            <result type="json">
+                <param name="root">list</param>
             </result>
         </action>
     </package>

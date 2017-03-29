@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface ExecutiveStaffInfoDao extends BaseDao{
 
+    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(String filmId);
 }
