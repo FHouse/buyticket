@@ -4,6 +4,8 @@ import org.movie.dao.inf.ExecutiveStaffTypeDao;
 import org.movie.dao.inf.FilmRegionDao;
 import org.movie.entity.FilmRegion;
 import org.movie.service.inf.FilmRegionService;
+import org.movie.util.CheckVer;
+import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,4 +23,22 @@ public class FilmRegionServiceImpl implements FilmRegionService{
     @Autowired
     @Qualifier("filmRegionDao")
     private FilmRegionDao dao;
+
+    @Override
+    public void addFilmRegion(FilmRegion filmRegion) {
+        filmRegion.setFilmRegionId(UUIDUtil.getUUID());
+        dao.save(filmRegion);
+    }
+
+    @Override
+    public void updateFilmRegion(FilmRegion filmRegion) throws Exception {
+        FilmRegion filmRegion1 = (FilmRegion) dao.findById(FilmRegion.class,filmRegion.getFilmRegionId());
+        filmRegion1 = CheckVer.checkVer(filmRegion1,filmRegion,FilmRegion.class);
+        dao.update(filmRegion1);
+    }
+
+    @Override
+    public List<FilmRegion> findFilmRegions() {
+        return dao.findAll(FilmRegion.class);
+    }
 }

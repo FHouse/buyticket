@@ -9,4 +9,22 @@ import java.util.List;
  */
 public interface FilmRegionService{
 
+    /**
+     * 添加地区
+     * @param filmRegion
+     */
+    public void addFilmRegion(FilmRegion filmRegion);
+
+    /**
+     * 修改地区
+     * @param filmRegion
+     */
+    public void updateFilmRegion(FilmRegion filmRegion) throws Exception;
+
+    /**
+     * 查询所有地区
+     * @return 返回所有地区的list集合
+     */
+    public List<FilmRegion> findFilmRegions();
+
 }

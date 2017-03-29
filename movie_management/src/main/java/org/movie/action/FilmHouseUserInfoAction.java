@@ -1,5 +1,6 @@
 package org.movie.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import org.movie.entity.FilmHouseUserInfo;
 import org.movie.service.inf.FilmHouseUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,7 @@ public class FilmHouseUserInfoAction {
         return "success";
     }
 
-    //查询所有银城用户
+    //查询所有影城用户
     public String findFilmHouseUsers(){
         list = service.findFilmHouseUsers();
         return "success";
@@ -74,6 +75,15 @@ public class FilmHouseUserInfoAction {
     //影城用户登陆
     public String filmHouseUserLogin(){
         message = service.filmHouseUserLogin(filmHouseUserInfo);
+        if(!message.equals("loginFail")){
+            ActionContext.getContext().getSession().put("filmHouseUserName",message);
+        }
+        return "success";
+    }
+
+    //根据影城id查询影城下所有用户信息
+    public String findFilmHouseUserByFilmHouseId(){
+        list = service.findFilmHouseUserByFilmHouseId(filmHouseUserInfo.getFilmHouseInfo());
         return "success";
     }
 }
