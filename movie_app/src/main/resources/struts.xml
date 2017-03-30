@@ -21,5 +21,15 @@
                 <param name="root">list</param>
             </result>
         </action>
+        <action name="findFilmHouseInfoByAreaId" class="filmHouseInfoAction" method="findFilmHouseInfoByAreaId">
+        <result type="json">
+            <param name="root">list</param>
+        </result>
+    </action>
+        <action name="findFilmRegions" class="filmRegionAction" method="findFilmRegions">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
     </package>
 </struts>
