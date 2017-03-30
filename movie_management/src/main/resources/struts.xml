@@ -154,21 +154,27 @@
     <!-- 管理员请求处理 -->
     <package name="admin" extends="json-default">
         <action name="addAdmin" class="adminAction" method="addAdmin">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.AdminException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
             </result>
+            <result type="chain">findAdmins</result>
         </action>
 
         <action name="deleteAdmin" class="adminAction" method="deleteAdmin">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.AdminException" result="deleteException" />
+            <result name="deleteException" type="json">
+                <param name="root">exception</param>
             </result>
+            <result type="chain">findAdmins</result>
         </action>
 
         <action name="updateAdmin" class="adminAction" method="updateAdmin">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.AdminException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
             </result>
+            <result type="chain">findAdmins</result>
         </action>
 
         <action name="findAdmins" class="adminAction" method="findAdmins">
@@ -178,8 +184,9 @@
         </action>
 
         <action name="adminLogin" class="adminAction" method="addAdmin">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.AdminException" result="loginException" />
+            <result name="loginException" type="json">
+                <param name="root">exception</param>
             </result>
         </action>
     </package>

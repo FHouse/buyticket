@@ -13,7 +13,7 @@ public interface AdminService{
      * 添加管理员
      * @param admin
      */
-    public String addAdmin(Admin admin);
+    public void addAdmin(Admin admin);
 
     /**
      * 删除管理员
@@ -38,5 +38,5 @@ public interface AdminService{
      * @param admin
      * @return
      */
-    public String adminLogin(Admin admin);
+    public Admin adminLogin(Admin admin);
 }
