@@ -9,4 +9,10 @@ import java.util.List;
  */
 public interface UsersDao extends BaseDao{
 
+    /**
+     * 根据用户名查询用户信息
+     * @param users
+     * @return
+     */
+    public Users findUserByUserName(Users users);
 }

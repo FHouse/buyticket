@@ -9,4 +9,28 @@ import java.util.List;
  */
 public interface UsersService{
 
+    /**
+     * 添加用户，可用于注册
+     * @param users
+     */
+    public String addUser(Users users);
+
+    /**
+     * 删除用户
+     * @param users
+     */
+    public void deleteUser(Users users);
+
+    /**
+     * 修改用户
+     * @param users
+     */
+    public void updateUser(Users users) throws Exception;
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    public List<Users> findUsers();
+
 }

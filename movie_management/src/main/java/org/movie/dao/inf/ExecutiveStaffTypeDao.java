@@ -9,4 +9,9 @@ import java.util.List;
  */
 public interface ExecutiveStaffTypeDao extends BaseDao{
 
+    /**
+     * 根据演职人员类型名称查询演职人员类型
+     * @return
+     */
+    public ExecutiveStaffType findESTypeByName(ExecutiveStaffType executiveStaffType);
 }
