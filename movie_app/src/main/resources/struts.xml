@@ -11,8 +11,6 @@
                 <param name="root">list</param>
             </result>
         </action>
-    </package>
-    <package name="area" extends="json-default">
         <action name="findAreas" class="areaAction" method="findAreas">
             <result type="json">
                 <param name="root">list</param>

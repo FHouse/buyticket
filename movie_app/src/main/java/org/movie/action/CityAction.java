@@ -3,17 +3,19 @@ package org.movie.action;
 import org.movie.entity.City;
 import org.movie.service.inf.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 /**
  * Created by admin on 2017/3/29.
  */
+@Controller("cityAction")
+@Scope("prototype")
 public class CityAction {
     //注入service
     @Autowired
-    @Qualifier("cityService")
     private CityService service;
 
     private List<City> list;
