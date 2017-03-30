@@ -22,11 +22,21 @@
             </result>
         </action>
         <action name="findFilmHouseInfoByAreaId" class="filmHouseInfoAction" method="findFilmHouseInfoByAreaId">
-        <result type="json">
-            <param name="root">list</param>
-        </result>
-    </action>
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
         <action name="findFilmRegions" class="filmRegionAction" method="findFilmRegions">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+        <action name="findFilmTypes" class="filmTypeAction" method="findFilmTypes">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+        <action name="findFilmYeras" class="filmYearsAction" method="findFilmYeras">
             <result type="json">
                 <param name="root">list</param>
             </result>
