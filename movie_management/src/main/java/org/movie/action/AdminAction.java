@@ -2,6 +2,7 @@ package org.movie.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import org.movie.entity.Admin;
+import org.movie.exception.AdminException;
 import org.movie.service.inf.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,7 +25,6 @@ public class AdminAction {
     private AdminService service;
 
     private Admin admin;
-    private String message;
     private List<Admin> list;
 
     public Admin getAdmin() {
@@ -33,14 +33,6 @@ public class AdminAction {
 
     public void setAdmin(Admin admin) {
         this.admin = admin;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public List<Admin> getList() {
@@ -53,32 +45,32 @@ public class AdminAction {
 
     //添加管理员
     public String addAdmin(){
-        message = service.addAdmin(admin);
-        return "success";
+        try{
+            service.addAdmin(admin);
+            return "success";
+        }catch(Exception e){
+            throw new AdminException("该用户已存在！");
+        }
     }
 
     //删除管理员
     public String deleteAdmin(){
         try {
             service.deleteAdmin(admin);
-            message = "删除成功！";
+            return "success";
         } catch (Exception e) {
-            e.printStackTrace();
-            message = "删除失败，请刷新后重新操作！";
+            throw new AdminException("删除失败，请刷新后重新操作！");
         }
-        return "success";
     }
 
     //修改管理员
     public String updateAdmin(){
         try {
             service.updateAdmin(admin);
-            message = "修改成功！";
+            return "success";
         } catch (Exception e) {
-            e.printStackTrace();
-            message = "修改失败，请刷新后重新操作！";
+            throw new AdminException("该数据已被修改，请刷新后重试！");
         }
-        return "success";
     }
 
     //查询所有管理员
@@ -89,10 +81,16 @@ public class AdminAction {
 
     //管理员登录
     public String adminLogin(){
-        message = service.adminLogin(admin);
-        if(!message.equals("用户名或密码不正确！")){
-            ActionContext.getContext().getSession().put("adminName",message);
+        try{
+            Admin admin1 = service.adminLogin(admin);
+            if(admin1.getAdminPassword().equals(admin.getAdminPassword())){
+                ActionContext.getContext().getSession().put("adminName",admin1.getAdminName());
+            }else{
+                throw new AdminException("用户名或密码不正确！");
+            }
+            return "success";
+        }catch(Exception e){
+            throw e;
         }
-        return "success";
     }
 }

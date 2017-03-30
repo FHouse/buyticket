@@ -2,6 +2,7 @@ package org.movie.service.impl;
 
 import org.movie.dao.inf.AdminDao;
 import org.movie.entity.Admin;
+import org.movie.exception.AdminException;
 import org.movie.service.inf.AdminService;
 import org.movie.util.CheckVer;
 import org.movie.util.ThisTime;
@@ -26,16 +27,10 @@ public class AdminServiceImpl implements AdminService{
     private AdminDao dao;
 
     @Override
-    public String addAdmin(Admin admin){
+    public void addAdmin(Admin admin){
         admin.setAdminId(UUIDUtil.getUUID());
-        try{
-            dao.findAdminByName(admin);
-            return "该用户已存在！";
-        }catch (Exception e){
-            dao.save(admin);
-            return "添加成功！";
-        }
-
+        dao.findAdminByName(admin);
+        dao.save(admin);
     }
 
     @Override
@@ -58,16 +53,11 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public String adminLogin(Admin admin) {
+    public Admin adminLogin(Admin admin) {
         try{
-            Admin admin1 = dao.findAdminByName(admin);
-            if(admin.getAdminPassword().equals(admin1.getAdminPassword())){
-                return admin.getAdminName();
-            }else{
-                return "用户名或密码不正确！";
-            }
+            return dao.findAdminByName(admin);
         }catch (Exception e){
-            return "用户名或密码不正确！";
+            throw new AdminException("用户名或密码不正确！");
         }
     }
 }
