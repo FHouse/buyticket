@@ -1,6 +1,5 @@
 package org.movie.service.impl;
 
-import org.movie.dao.inf.ExecutiveStaffTypeDao;
 import org.movie.dao.inf.UsersDao;
 import org.movie.entity.Users;
 import org.movie.service.inf.UsersService;
@@ -52,5 +51,4 @@ public class UsersServiceImpl implements UsersService{
     public List<Users> findUsers() {
         return dao.findAll(Users.class);
     }
-
 }
