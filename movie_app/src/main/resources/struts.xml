@@ -41,5 +41,15 @@
                 <param name="root">list</param>
             </result>
         </action>
+        <action name="findUserByUserName" class="usersAction" method="findUserByUserName">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+        <action name="findExecutiveStaffInfoById" class="executiveStaffInfoAction" method="findExecutiveStaffInfoById">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
     </package>
 </struts>
