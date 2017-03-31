@@ -1,6 +1,7 @@
 package org.movie.action;
 
 import org.movie.entity.FilmHouseInfo;
+import org.movie.exception.FilmHouseInfoException;
 import org.movie.service.inf.FilmHouseInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -51,11 +52,14 @@ public class FilmHouseInfoAction {
 
     //添加影城
     public String addFilmHouseInfo(){
-        service.add(filmHouseInfo);
-        return "success";
+        if(service.add(filmHouseInfo)){
+            return "success";
+        }else{
+            throw new FilmHouseInfoException("该影城已存在!");
+        }
     }
 
-    //删除影城
+    //删除影城(未完成)
     public String deleteFilmHouseInfo(){
         service.delete(filmHouseInfo);
         return "success";
@@ -77,11 +81,10 @@ public class FilmHouseInfoAction {
     public String updateFilmHouseInfo(){
         try {
             service.update(filmHouseInfo);
-            message = "修改成功";
+            return "success";
         } catch (Exception e) {
             e.printStackTrace();
-            message = "修改失败";
+            throw new FilmHouseInfoException("修改失败，请刷新后重试！");
         }
-        return "success";
     }
 }

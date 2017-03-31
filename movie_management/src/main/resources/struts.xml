@@ -5,10 +5,19 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+
     <!-- 城市请求处理 -->
     <package name="city" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success"/>
+        </global-results>
+
         <action name="addCity" class="cityAction" method="addCitys">
-            <result type="chain">findCitys</result>
+            <exception-mapping exception="org.movie.exception.CityException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
         </action>
 
         <action name="findCitys" class="cityAction" method="findCitys">
@@ -18,16 +27,25 @@
         </action>
 
         <action name="updateCity" class="cityAction" method="updateCity">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.CityException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
             </result>
         </action>
     </package>
 
     <!-- 区（县）请求处理 -->
     <package name="area" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
         <action name="addArea" class="areaAction" method="addArea">
-            <result type="chain">findAreas</result>
+            <exception-mapping exception="org.movie.exception.AreaException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
         </action>
 
         <action name="findAreas" class="areaAction" method="findAreas">
@@ -37,8 +55,9 @@
         </action>
 
         <action name="updateArea" class="areaAction" method="updateArea">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.AreaException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
             </result>
         </action>
 
@@ -51,8 +70,16 @@
 
     <!-- 影城请求处理 -->
     <package name="filmHouseInfo" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
         <action name="addFilmHouseInfo" class="filmHouseInfoAction" method="addFilmHouseInfo">
-            <result type="chain">findFilmHouseInfos</result>
+            <exception-mapping exception="org.movie.exception.FilmHouseInfoException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
         </action>
 
         <action name="findFilmHouseInfos" class="filmHouseInfoAction" method="findFilmHouseInfos">
@@ -72,16 +99,25 @@
         </action>
 
         <action name="updateFilmHouseInfo" class="filmHouseInfoAction" method="updateFilmHouseInfo">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.FilmHouseInfoException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
             </result>
         </action>
     </package>
 
     <!-- 影城用户请求处理 -->
     <package name="filmHouseUserInfo" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
         <action name="addFilmHouseUser" class="filmHouseUserInfoAction" method="addFilmHouseUser">
-            <result type="chain">findFilmHouseUsers</result>
+            <exception-mapping exception="org.movie.exception.FilmHouseUserInfoException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
         </action>
 
         <action name="deleteFilmHouseUser" class="filmHouseUserInfoAction" method="deleteFilmHouseUser">
@@ -95,14 +131,16 @@
         </action>
 
         <action name="filmHouseUserLogin" class="filmHouseUserInfoAction" method="filmHouseUserLogin">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.FilmHouseUserInfoException" result="loginException" />
+            <result name="loginException" type="json">
+                <param name="root">exception</param>
             </result>
         </action>
 
         <action name="updateFilmHouseUser" class="filmHouseUserInfoAction" method="updateFilmHouseUser">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.FilmHouseUserInfoException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
             </result>
         </action>
 
@@ -115,13 +153,22 @@
 
     <!-- 电影类型请求处理 -->
     <package name="filmType" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
         <action name="addFilmType" class="filmTypeAction" method="addFilmType">
-            <result type="chain">findFilmTypes</result>
+            <exception-mapping exception="org.movie.exception.FilmTypeException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
         </action>
 
         <action name="updateFilmType" class="filmTypeAction" method="updateFilmType">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.FilmTypeException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
             </result>
         </action>
 
@@ -133,14 +180,51 @@
     </package>
 
     <!-- 电影年代请求处理 -->
+    <package name="filmYears" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
+        <action name="addFilmYears" class="filmYearsAction" method="addFilmYears">
+            <exception-mapping exception="org.movie.exception.FilmYearsException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="updateFilmYears" class="filmYearsAction" method="updateFilmYears">
+            <exception-mapping exception="org.movie.exception.FilmYearsException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="findFilmYears" class="filmYearsAction" method="findFilmYeras">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+    </package>
+    
+    <!-- 电影地区请求处理 -->
     <package name="filmRegion" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success"/>
+        </global-results>
+
         <action name="addFilmRegion" class="filmRegionAction" method="addFilmRegion">
-            <result type="chain">findFilmRegions</result>
+            <exception-mapping exception="org.movie.exception.FilmRegionException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
         </action>
 
         <action name="updateFilmRegion" class="filmRegionAction" method="updateFilmRegion">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.FilmRegionException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
             </result>
         </action>
 
@@ -153,12 +237,16 @@
 
     <!-- 管理员请求处理 -->
     <package name="admin" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
         <action name="addAdmin" class="adminAction" method="addAdmin">
             <exception-mapping exception="org.movie.exception.AdminException" result="addException" />
             <result name="addException" type="json">
                 <param name="root">exception</param>
             </result>
-            <result type="chain">findAdmins</result>
         </action>
 
         <action name="deleteAdmin" class="adminAction" method="deleteAdmin">
@@ -166,7 +254,6 @@
             <result name="deleteException" type="json">
                 <param name="root">exception</param>
             </result>
-            <result type="chain">findAdmins</result>
         </action>
 
         <action name="updateAdmin" class="adminAction" method="updateAdmin">
@@ -174,7 +261,6 @@
             <result name="updateException" type="json">
                 <param name="root">exception</param>
             </result>
-            <result type="chain">findAdmins</result>
         </action>
 
         <action name="findAdmins" class="adminAction" method="findAdmins">
@@ -193,19 +279,26 @@
 
     <!-- 用户请求处理 -->
     <package name="users" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
         <action name="addUser" class="usersAction" method="addUser">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.UsersException" result="addException" />
+            <result type="json" name="addException">
+                <param name="root">exception</param>
             </result>
         </action>
 
         <action name="deleteUser" class="usersAction" method="deleteUser">
-            <result type="chain">findUsers</result>
+
         </action>
 
         <action name="updateUser" class="usersAction" method="updateUser">
-            <result type="json">
-                <param name="root">message</param>
+            <exception-mapping exception="org.movie.exception.UsersException" result="updateException" />
+            <result type="json" name="updateException">
+                <param name="root">exception</param>
             </result>
         </action>
 
@@ -218,9 +311,13 @@
 
     <!-- 演职人员类型请求处理 -->
     <package name="executiveStaffType" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
         <action name="addExecutiveStaffType" class="executiveStaffTypeAction" method="addExecutiveStaffType">
             <exception-mapping exception="org.movie.exception.ExecutiveStaffTypeException" result="addException" />
-            <result type="chain">findExecutiveStaffTypes</result>
             <result name="addException" type="json">
                 <param name="root">exception</param>
             </result>
@@ -228,7 +325,6 @@
 
         <action name="deleteExecutiveStaffType" class="executiveStaffTypeAction" method="deleteExecutiveStaffType">
             <exception-mapping exception="org.movie.exception.ExecutiveStaffTypeException" result="deleteException" />
-            <result type="json">findExecutiveStaffTypes</result>
             <result name="deleteException" type="json">
                 <param name="root">exception</param>
             </result>
@@ -236,7 +332,6 @@
 
         <action name="updateExecutiveStaffType" class="executiveStaffTypeAction" method="updateExecutiveStaffType">
             <exception-mapping exception="org.movie.exception.ExecutiveStaffTypeException" result="updateException" />
-            <result type="chain">findExecutiveStaffTypes</result>
             <result name="updateException" type="json">
                 <param name="root">exception</param>
             </result>
@@ -251,12 +346,16 @@
 
     <!-- 演职人员请求处理 -->
     <package name="executiveStaffInfo" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" />
+        </global-results>
+
         <action name="addExecutiveStaff" class="executiveStaffInfoAction" method="addExecutiveStaffInfo">
             <exception-mapping exception="org.movie.exception.ExecutiveStaffInfoException" result="addException" />
             <result type="json" name="addException">
                 <param name="root">exception</param>
             </result>
-            <result type="chain">findExecutiveStaffs</result>
         </action>
 
         <action name="deleteExecutiveStaffById" class="executiveStaffInfoAction" method="deleteExecutiveStaffInfoById">
@@ -264,7 +363,6 @@
             <result type="json" name="deleteException">
                 <param name="root">exception</param>
             </result>
-            <result type="chain">findExecutiveStaffs</result>
         </action>
 
         <action name="deleteExecutiveStaffByFilmId" class="executiveStaffInfoAction" method="deleteExecutiveStaffInfoByFilmId">
@@ -272,7 +370,6 @@
             <result type="json" name="deleteException">
                 <param name="root">exception</param>
             </result>
-            <result type="chain">findExecutiveStaffs</result>
         </action>
 
         <action name="updateExecutiveStaff" class="executiveStaffInfoAction" method="updateExecutiveStaffInfo">
@@ -280,7 +377,6 @@
             <result type="json" name="updateException">
                 <param name="root">exception</param>
             </result>
-            <result type="chain">findExecutiveStaffs</result>
         </action>
 
         <action name="findExecutiveStaffs" class="executiveStaffInfoAction" method="findExecutiveStaffInfos">

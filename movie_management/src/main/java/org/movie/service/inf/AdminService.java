@@ -13,7 +13,7 @@ public interface AdminService{
      * 添加管理员
      * @param admin
      */
-    public void addAdmin(Admin admin);
+    public boolean addAdmin(Admin admin);
 
     /**
      * 删除管理员

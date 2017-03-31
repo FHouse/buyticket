@@ -25,12 +25,19 @@ public class AreaServiceImpl implements AreaService{
     //注入dao
     @Autowired
     @Qualifier("areaDao")
-    private AreaDaoImpl dao;
+    private AreaDao dao;
 
     @Override
-    public void addArea(Area area) {
+    public boolean addArea(Area area) {
         area.setAreaId(UUIDUtil.getUUID());
-        dao.save(area);
+        try{
+            dao.findAreaByAreaName(area);
+            return false;
+        }catch(Exception e){
+            dao.save(area);
+            return true;
+        }
+
     }
 
     @Override
@@ -47,11 +54,7 @@ public class AreaServiceImpl implements AreaService{
     public void update(Area area) throws Exception {
         Area area1 = (Area) dao.findById(Area.class,area.getAreaId());
         area1  = CheckVer.checkVer(area1,area,Area.class);
-        if(area1 != null){
-            dao.update(area1);
-        }else{
-            throw new Exception("版本号不一致");
-        }
+        dao.update(area1);
     }
 
 }

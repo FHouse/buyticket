@@ -27,10 +27,15 @@ public class AdminServiceImpl implements AdminService{
     private AdminDao dao;
 
     @Override
-    public void addAdmin(Admin admin){
+    public boolean addAdmin(Admin admin){
         admin.setAdminId(UUIDUtil.getUUID());
-        dao.findAdminByName(admin);
-        dao.save(admin);
+        try{
+            dao.findAdminByName(admin);
+            return false;
+        }catch (Exception e){
+            dao.save(admin);
+            return true;
+        }
     }
 
     @Override

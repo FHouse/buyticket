@@ -17,4 +17,10 @@ public interface AreaDao extends BaseDao{
      */
     public List<Area> findAreaByCityId(City city);
 
+    /**
+     * 根据地区名称查询地区信息
+     * @param area
+     * @return
+     */
+    public Area findAreaByAreaName(Area area);
 }

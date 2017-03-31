@@ -21,4 +21,12 @@ public class AreaDaoImpl extends BaseDaoImpl implements AreaDao {
         query.setParameter(1,city.getCityId());
         return query.getResultList();
     }
+
+    @Override
+    public Area findAreaByAreaName(Area area) {
+        String jpql = "form Area a where a.areaName = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1,area.getAreaName());
+        return (Area) query.getSingleResult();
+    }
 }

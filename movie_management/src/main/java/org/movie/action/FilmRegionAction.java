@@ -1,6 +1,7 @@
 package org.movie.action;
 
 import org.movie.entity.FilmRegion;
+import org.movie.exception.FilmRegionException;
 import org.movie.service.inf.FilmRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -52,20 +53,21 @@ public class FilmRegionAction {
 
     //添加年代
     public String addFilmRegion(){
-        service.addFilmRegion(filmRegion);
-        return "success";
+        if(service.addFilmRegion(filmRegion)) {
+            return "success";
+        }else{
+            throw new FilmRegionException("添加失败！");
+        }
     }
 
     //修改年代
     public String updateFilmRegion(){
         try {
             service.updateFilmRegion(filmRegion);
-            message = "修改成功！";
+            return findFilmRegions();
         } catch (Exception e) {
-            e.printStackTrace();
-            message = "修改失败！";
+            throw new FilmRegionException("该数据已被修改，请刷新后重试！");
         }
-        return "success";
     }
 
     //查询所有年代

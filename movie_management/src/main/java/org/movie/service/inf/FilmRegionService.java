@@ -13,7 +13,7 @@ public interface FilmRegionService{
      * 添加地区
      * @param filmRegion
      */
-    public void addFilmRegion(FilmRegion filmRegion);
+    public boolean addFilmRegion(FilmRegion filmRegion);
 
     /**
      * 修改地区

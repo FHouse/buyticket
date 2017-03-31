@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface FilmRegionDao extends BaseDao{
 
+    public FilmRegion findFilmRegionByFilmRegionName(FilmRegion filmRegion);
 }

@@ -13,7 +13,7 @@ public interface UsersService{
      * 添加用户，可用于注册
      * @param users
      */
-    public String addUser(Users users);
+    public boolean addUser(Users users);
 
     /**
      * 删除用户

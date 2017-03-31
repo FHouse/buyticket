@@ -15,7 +15,7 @@ public interface FilmHouseInfoService{
      * 添加影城信息
      * @param filmHouseInfo 需要添加的影城信息
      */
-    public void add(FilmHouseInfo filmHouseInfo);
+    public boolean add(FilmHouseInfo filmHouseInfo);
 
     /**
      * 删除影城信息

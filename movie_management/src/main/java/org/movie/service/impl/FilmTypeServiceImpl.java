@@ -2,6 +2,7 @@ package org.movie.service.impl;
 
 import org.movie.dao.inf.FilmTypeDao;
 import org.movie.entity.FilmType;
+import org.movie.exception.FilmTypeException;
 import org.movie.service.inf.FilmTypeService;
 import org.movie.util.CheckVer;
 import org.movie.util.UUIDUtil;
@@ -26,9 +27,15 @@ public class FilmTypeServiceImpl implements FilmTypeService {
     private FilmTypeDao dao;
 
     @Override
-    public void addFilmType(FilmType filmType) {
+    public boolean addFilmType(FilmType filmType){
         filmType.setFilmTypeId(UUIDUtil.getUUID());
-        dao.save(filmType);
+        try{
+            dao.findFilmTypeByTypeName(filmType);
+            return false;
+        }catch(Exception e){
+            dao.save(filmType);
+            return true;
+        }
     }
 
     @Override

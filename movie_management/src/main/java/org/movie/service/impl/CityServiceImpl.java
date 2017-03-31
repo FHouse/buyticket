@@ -28,20 +28,16 @@ public class CityServiceImpl implements CityService{
     @Qualifier("cityDao")
     private CityDao dao;
 
-    //注入区（县）dao
-    @Autowired
-    @Qualifier("areaDao")
-    private AreaDao areaDao;
-
-    //注入影城dao
-    @Autowired
-    @Qualifier("filmHouseInfoDao")
-    private FilmHouseInfoDao filmHouseInfoDao;
-
     @Override
-    public void add(City city) {
+    public boolean add(City city) {
         city.setCityId(UUIDUtil.getUUID());
-        dao.save(city);
+        try{
+            dao.findCityByCityName(city);
+            return false;
+        }catch(Exception e){
+            dao.save(city);
+            return true;
+        }
     }
 
     @Override

@@ -22,4 +22,11 @@ public interface FilmHouseInfoDao extends BaseDao{
      * @param area 需要删除的区（县）的信息
      */
     public void deleteFilmHouseInfoByAreaId(Area area);
+
+    /**
+     * 根据影城名称查询该影城信息
+     * @param filmHouseInfo
+     * @return
+     */
+    public FilmHouseInfo findFilmHouseInfoByFilmHouseName(FilmHouseInfo filmHouseInfo);
 }

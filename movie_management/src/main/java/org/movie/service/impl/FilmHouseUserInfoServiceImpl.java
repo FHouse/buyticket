@@ -5,6 +5,7 @@ import org.movie.dao.inf.FilmHouseUserInfoDao;
 import org.movie.entity.FilmHouseInfo;
 import org.movie.entity.FilmHouseUserInfo;
 import org.movie.service.inf.FilmHouseUserInfoService;
+import org.movie.util.CheckVer;
 import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,12 +26,14 @@ public class FilmHouseUserInfoServiceImpl implements FilmHouseUserInfoService{
     private FilmHouseUserInfoDao dao;
 
     @Override
-    public void addFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) {
+    public boolean addFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) {
         filmHouseUserInfo.setFilmHouseUserId(UUIDUtil.getUUID());
         try{
             dao.findFilmHouseUserByName(filmHouseUserInfo);
+            return false;
         }catch(Exception e){
             dao.save(filmHouseUserInfo);
+            return true;
         }
     }
 
@@ -45,29 +48,16 @@ public class FilmHouseUserInfoServiceImpl implements FilmHouseUserInfoService{
     }
 
     @Override
-    public String updateFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) {
-        try{
-            dao.update(filmHouseUserInfo);
-            return "修改成功！";
-        }catch (Exception e){
-            e.printStackTrace();
-            return "修改失败！";
-        }
-
+    public void updateFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) throws Exception {
+        FilmHouseUserInfo filmHouseUserInfo1 = (FilmHouseUserInfo) dao.findById(FilmHouseUserInfo.class,filmHouseUserInfo.getFilmHouseUserId());
+        filmHouseUserInfo1 = CheckVer.checkVer(filmHouseUserInfo1,filmHouseUserInfo,FilmHouseUserInfo.class);
+        dao.update(filmHouseUserInfo1);
     }
 
     @Override
-    public String filmHouseUserLogin(FilmHouseUserInfo filmHouseUserInfo) {
-        try{
-            FilmHouseUserInfo filmHouseUserInfo1 = dao.findFilmHouseUserByName(filmHouseUserInfo);
-            if((filmHouseUserInfo1 != null) && filmHouseUserInfo.getCinemaUserPassword().equals(filmHouseUserInfo1.getCinemaUserPassword())){
-                return filmHouseUserInfo1.getCinemaUserName();
-            }
-            return "loginFail";
-        }catch(Exception e){
-            e.printStackTrace();
-            return "loginFail";
-        }
+    public FilmHouseUserInfo filmHouseUserLogin(FilmHouseUserInfo filmHouseUserInfo) {
+        FilmHouseUserInfo filmHouseUserInfo1 = dao.findFilmHouseUserByName(filmHouseUserInfo);
+        return filmHouseUserInfo1;
     }
 
     @Override

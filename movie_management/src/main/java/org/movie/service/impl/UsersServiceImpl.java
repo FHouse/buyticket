@@ -24,14 +24,14 @@ public class UsersServiceImpl implements UsersService{
     private UsersDao dao;
 
     @Override
-    public String addUser(Users users) {
+    public boolean addUser(Users users){
         users.setUsersId(UUIDUtil.getUUID());
         try{
             dao.findUserByUserName(users);
-            return "该用户名或电话号码已存在！";
+            return false;
         }catch(Exception e){
             dao.save(users);
-            return "添加成功！";
+            return true;
         }
     }
 

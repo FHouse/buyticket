@@ -14,7 +14,7 @@ public interface FilmTypeService {
      * 添加电影类型
      * @param filmType
      */
-    public void addFilmType(FilmType filmType);
+    public boolean addFilmType(FilmType filmType);
 
     /**
      * 修改电影类型
