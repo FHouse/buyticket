@@ -14,7 +14,7 @@ public interface FilmYearsService {
      * 添加电影年代
      * @param filmYears
      */
-    public void addFilmYears(FilmYears filmYears);
+    public boolean addFilmYears(FilmYears filmYears);
 
     /**
      * 修改电影年代

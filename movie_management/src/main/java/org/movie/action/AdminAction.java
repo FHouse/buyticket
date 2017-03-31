@@ -45,10 +45,9 @@ public class AdminAction {
 
     //添加管理员
     public String addAdmin(){
-        try{
-            service.addAdmin(admin);
+        if(service.addAdmin(admin)){
             return "success";
-        }catch(Exception e){
+        }else{
             throw new AdminException("该用户已存在！");
         }
     }

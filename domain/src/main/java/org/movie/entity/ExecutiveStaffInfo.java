@@ -1,5 +1,7 @@
 package org.movie.entity;
 
+import net.bytebuddy.dynamic.TypeResolutionStrategy;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -65,7 +67,7 @@ public class ExecutiveStaffInfo {
     }
     public void setExecutiveStaffTypes(Set<ExecutiveStaffType> executiveStaffTypes) {this.executiveStaffTypes = executiveStaffTypes;}
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="filminfoid")
     public FilmInfo getFilmInfo() {
         return filmInfo;

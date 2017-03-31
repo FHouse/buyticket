@@ -25,9 +25,16 @@ public class FilmRegionServiceImpl implements FilmRegionService{
     private FilmRegionDao dao;
 
     @Override
-    public void addFilmRegion(FilmRegion filmRegion) {
+    public boolean addFilmRegion(FilmRegion filmRegion) {
         filmRegion.setFilmRegionId(UUIDUtil.getUUID());
-        dao.save(filmRegion);
+        try{
+            dao.findFilmRegionByFilmRegionName(filmRegion);
+            return false;
+        }catch(Exception e){
+            dao.save(filmRegion);
+            return true;
+        }
+
     }
 
     @Override

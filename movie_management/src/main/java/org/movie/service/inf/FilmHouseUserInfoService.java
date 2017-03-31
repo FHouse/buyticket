@@ -14,7 +14,7 @@ public interface FilmHouseUserInfoService{
      * 添加影城用户
      * @param filmHouseUserInfo 影城用户信息
      */
-    public void addFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo);
+    public boolean addFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo);
 
     /**
      *删除影城用户
@@ -33,14 +33,14 @@ public interface FilmHouseUserInfoService{
      * @param filmHouseUserInfo 需要修改的影城用户信息
      * @return 返回修改信息
      */
-    public String updateFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo);
+    public void updateFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) throws Exception;
 
     /**
      * 根据用户名查询指定用户的信息
      * @param filmHouseUserInfo  需要查询的影城用户的电话或用户名
      * @return 返回一个影城用户实例
      */
-    public String filmHouseUserLogin(FilmHouseUserInfo filmHouseUserInfo);
+    public FilmHouseUserInfo filmHouseUserLogin(FilmHouseUserInfo filmHouseUserInfo);
 
     /**
      * 根据影城id查询该影城所有的影城用户

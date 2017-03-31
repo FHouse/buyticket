@@ -1,6 +1,7 @@
 package org.movie.action;
 
 import org.movie.entity.FilmType;
+import org.movie.exception.FilmTypeException;
 import org.movie.service.inf.FilmTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -52,20 +53,21 @@ public class FilmTypeAction {
 
     //添加电影类型
     public String addFilmType(){
-        service.addFilmType(filmType);
-        return "success";
+        if(service.addFilmType(filmType)){
+            return "success";
+        }else{
+            throw new FilmTypeException("添加失败！");
+        }
     }
 
     //修改电影类型
     public String updateFilmType(){
         try{
             service.updateFilmType(filmType);
-            message = "修改成功！";
+            return "success";
         }catch(Exception e){
-            e.printStackTrace();
-            message = "修改失败！";
+            throw new FilmTypeException("修改失败,请刷新后重试！");
         }
-        return "success";
     }
 
     //查询所有电影类型

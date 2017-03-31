@@ -26,9 +26,16 @@ public class FilmHouseInfoServiceImpl implements FilmHouseInfoService{
     private FilmHouseInfoDao dao;
 
     @Override
-    public void add(FilmHouseInfo filmHouseInfo) {
+    public boolean add(FilmHouseInfo filmHouseInfo) {
         filmHouseInfo.setFilmHouseId(UUIDUtil.getUUID());
-        dao.save(filmHouseInfo);
+        try{
+            dao.findFilmHouseInfoByFilmHouseName(filmHouseInfo);
+            return false;
+        }catch(Exception e){
+            dao.save(filmHouseInfo);
+            return true;
+        }
+
     }
 
     @Override

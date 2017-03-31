@@ -1,9 +1,7 @@
 package org.movie.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -21,6 +19,8 @@ public class FilmType {
     private String filmTypeState = "禁用";
     //乐观锁版本号
     private int ver = 1;
+    //多对多关联电影
+    private Set<FilmInfo> filmInfos = new HashSet<>();
 
     @Id
     public String getFilmTypeId() {
@@ -53,4 +53,8 @@ public class FilmType {
     public void setVer(int ver) {
         this.ver = ver;
     }
+
+    @ManyToMany(mappedBy = "filmTypes")
+    public Set<FilmInfo> getFilmInfos() {return filmInfos;}
+    public void setFilmInfos(Set<FilmInfo> filmInfos) {this.filmInfos = filmInfos;}
 }

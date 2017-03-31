@@ -16,7 +16,7 @@ public interface AreaService{
      * @param area 需要添加的区（县）
      * @return 返回添加结果
      */
-    public void addArea(Area area);
+    public boolean addArea(Area area);
 
     /**
      * 根据城市id查询该市所有的区（县）

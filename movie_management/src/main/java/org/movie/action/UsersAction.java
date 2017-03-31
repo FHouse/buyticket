@@ -1,7 +1,9 @@
 package org.movie.action;
 
 import org.movie.entity.Users;
+import org.movie.exception.UsersException;
 import org.movie.service.inf.UsersService;
+import org.omg.CORBA.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -52,8 +54,11 @@ public class UsersAction {
 
     //添加用户
     public String addUser(){
-        message = service.addUser(users);
-        return "success";
+        if(service.addUser(users)){
+            return "success";
+        }else{
+            throw new UsersException("添加失败！");
+        }
     }
 
     //删除用户（暂未实现）
@@ -66,12 +71,10 @@ public class UsersAction {
     public String updateUser(){
         try {
             service.updateUser(users);
-            message = "修改成功！";
+            return "success";
         } catch (Exception e) {
-            e.printStackTrace();
-            message = "该用户信息已被修改，请刷新后重试！";
+            throw new UsersException("该用户信息已被修改，请刷新后重试！");
         }
-        return "success";
     }
 
     //查询所有用户

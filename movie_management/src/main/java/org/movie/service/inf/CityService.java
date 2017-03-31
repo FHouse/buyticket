@@ -15,7 +15,7 @@ public interface CityService{
      * @param city 需要添加的城市
      * @return 返回添加信息
      */
-    public void add(City city);
+    public boolean add(City city);
 
     /**
      * 查询所有城市

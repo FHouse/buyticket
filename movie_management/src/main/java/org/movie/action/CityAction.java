@@ -1,6 +1,7 @@
 package org.movie.action;
 
 import org.movie.entity.City;
+import org.movie.exception.CityException;
 import org.movie.service.inf.BaseService;
 import org.movie.service.inf.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,6 @@ public class CityAction {
 
     private City city;
     private List<City> list;
-    private String message;
 
     public City getCity() {
         return city;
@@ -45,24 +45,13 @@ public class CityAction {
         this.list = list;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     //添加城市信息
     public String addCitys(){
-        try {
-            service.add(city);
-            message = "添加成功";
-        }catch(Exception e){
-            e.printStackTrace();
-            message = "添加失败";
+        if(service.add(city)){
+            return "success";
+        }else{
+            throw new CityException("添加失败，该城市已存在！");
         }
-        return "success";
     }
 
     //查询所有城市信息
@@ -76,11 +65,10 @@ public class CityAction {
     public String updateCity(){
         try {
             service.update(city);
-            message = "更新成功";
+            return "success";
         } catch (Exception e) {
-            message = "更新失败";
             e.printStackTrace();
+            throw new CityException("修改失败，请刷新后重试！");
         }
-        return "success";
     }
 }

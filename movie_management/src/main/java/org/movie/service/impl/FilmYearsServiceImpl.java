@@ -26,9 +26,16 @@ public class FilmYearsServiceImpl implements FilmYearsService {
     private FilmYearsDao dao;
 
     @Override
-    public void addFilmYears(FilmYears filmYears) {
+    public boolean addFilmYears(FilmYears filmYears) {
         filmYears.setFilmYearsId(UUIDUtil.getUUID());
-        dao.save(filmYears);
+        try{
+            dao.findFilmYearsByFilmYearsName(filmYears);
+            return false;
+        }catch(Exception e){
+            dao.save(filmYears);
+            return true;
+        }
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package org.movie.action;
 
 import org.movie.entity.Area;
+import org.movie.exception.AreaException;
 import org.movie.service.inf.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +24,6 @@ public class AreaAction {
     private AreaService service;
 
     private Area area;
-    private String message;
     private List<Area> list;
 
     public Area getArea() {
@@ -32,14 +32,6 @@ public class AreaAction {
 
     public void setArea(Area area) {
         this.area = area;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public List<Area> getList() {
@@ -52,8 +44,12 @@ public class AreaAction {
 
     //添加区（县）信息
     public String addArea(){
-        service.addArea(area);
-        return "success";
+        if(service.addArea(area)){
+            return "success";
+        }else{
+            throw new AreaException("添加失败,该地区已存在！");
+        }
+
     }
 
     //根据城市id查询该城市的所有区（县）
@@ -72,11 +68,10 @@ public class AreaAction {
     public String updateArea(){
         try {
             service.update(area);
-            message = "更新成功";
+            return "success";
         } catch (Exception e) {
-            message = "更新失败";
             e.printStackTrace();
+            throw new AreaException("修改失败，请刷新后重试！");
         }
-        return "success";
     }
 }

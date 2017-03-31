@@ -1,6 +1,7 @@
 package org.movie.action;
 
 import org.movie.entity.FilmYears;
+import org.movie.exception.FilmYearsException;
 import org.movie.service.inf.FilmYearsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -52,20 +53,21 @@ public class FilmYearsAction {
 
     //添加电影年代
     public String addFilmYears(){
-        service.addFilmYears(filmYears);
-        return "success";
+        if(service.addFilmYears(filmYears)){
+            return "success";
+        }else{
+            throw new FilmYearsException("添加失败！");
+        }
     }
 
     //修改电影年代
     public String updateFilmYears(){
         try {
             service.updateFilmYears(filmYears);
-            message = "修改成功！";
+            return "success";
         } catch (Exception e) {
-            e.printStackTrace();
-            message = "修改失败！";
+            throw new FilmYearsException("该数据已被修改，刷新后重试！");
         }
-        return "success";
     }
 
     //查询所有电影年代
