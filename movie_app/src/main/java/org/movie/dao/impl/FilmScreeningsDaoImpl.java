@@ -1,7 +1,11 @@
 package org.movie.dao.impl;
 
 import org.movie.dao.inf.FilmScreeningsDao;
+import org.movie.entity.FilmScreenings;
 import org.springframework.stereotype.Repository;
+
+import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Created by admin on 2017/3/14.
