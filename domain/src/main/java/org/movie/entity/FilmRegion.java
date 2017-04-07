@@ -54,7 +54,7 @@ public class FilmRegion {
         this.ver = ver;
     }
 
-    @OneToMany(mappedBy = "filmRegion")
+    @OneToMany(mappedBy = "filmRegion",fetch = FetchType.LAZY)
     public Set<FilmInfo> getFilms() {
         return films;
     }

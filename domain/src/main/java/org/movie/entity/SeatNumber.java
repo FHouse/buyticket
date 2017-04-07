@@ -32,7 +32,7 @@ public class SeatNumber {
         this.seatNumber = seatNumber;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="orderinfoid")
     public OrderInfo getOrderInfo() {
         return orderInfo;

@@ -52,7 +52,7 @@ public class FilmHouseUserInfo {
         this.ver = ver;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="filmhouseinfoid")
     public FilmHouseInfo getFilmHouseInfo() {
         return filmHouseInfo;

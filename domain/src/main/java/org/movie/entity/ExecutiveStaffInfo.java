@@ -22,7 +22,7 @@ public class ExecutiveStaffInfo {
     //乐观锁版本号
     private int ver = 1;
     //演职人员类型
-    private Set<ExecutiveStaffType> executiveStaffTypes;
+    private Set<ExecutiveStaffType> executiveStaffTypes = new HashSet<>();
     //该演职人员所演出的电影
     private FilmInfo filmInfo;
 
@@ -58,7 +58,7 @@ public class ExecutiveStaffInfo {
         this.ver = ver;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="stafftype_staffinfo",
             joinColumns=@JoinColumn(name="staffinfoid"),
             inverseJoinColumns=@JoinColumn(name="stafftypeid"))

@@ -42,7 +42,7 @@ public class FilmAtlas {
         this.ver = ver;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="filminfoid")
     public FilmInfo getFilmInfo() {
         return filmInfo;

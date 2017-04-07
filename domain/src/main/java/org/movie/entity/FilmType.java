@@ -54,7 +54,7 @@ public class FilmType {
         this.ver = ver;
     }
 
-    @ManyToMany(mappedBy = "filmTypes")
+    @ManyToMany(mappedBy = "filmTypes",fetch = FetchType.LAZY)
     public Set<FilmInfo> getFilmInfos() {return filmInfos;}
     public void setFilmInfos(Set<FilmInfo> filmInfos) {this.filmInfos = filmInfos;}
 }

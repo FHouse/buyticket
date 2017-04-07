@@ -35,7 +35,7 @@ public class CollectionInfo {
         this.recordTime = recordTime;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="filminfoid")
     public FilmInfo getFilmInfo() {
         return filmInfo;
@@ -44,7 +44,7 @@ public class CollectionInfo {
         this.filmInfo = filmInfo;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="usersid")
     public Users getUsers() {
         return users;

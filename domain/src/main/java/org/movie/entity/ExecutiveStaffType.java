@@ -44,7 +44,7 @@ public class ExecutiveStaffType {
         this.ver = ver;
     }
 
-    @ManyToMany(mappedBy = "executiveStaffTypes")
+    @ManyToMany(mappedBy = "executiveStaffTypes",fetch = FetchType.LAZY)
     public Set<ExecutiveStaffInfo> getExecutiveStaffs() {
         return executiveStaffs;
     }

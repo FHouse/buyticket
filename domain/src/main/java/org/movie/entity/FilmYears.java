@@ -52,7 +52,7 @@ public class FilmYears {
         this.ver = ver;
     }
 
-    @OneToMany(mappedBy = "filmYears")
+    @OneToMany(mappedBy = "filmYears",fetch = FetchType.LAZY)
     public Set<FilmInfo> getFilms() {
         return films;
     }
