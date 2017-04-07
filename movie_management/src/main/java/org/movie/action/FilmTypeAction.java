@@ -3,6 +3,7 @@ package org.movie.action;
 import org.movie.entity.FilmType;
 import org.movie.exception.FilmTypeException;
 import org.movie.service.inf.FilmTypeService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -73,6 +74,9 @@ public class FilmTypeAction {
     //查询所有电影类型
     public String findFilmTypes(){
         list = service.findFilmTypes();
+        for (FilmType type:list) {
+            RelieveUtil.relieve(type);
+        }
         return "success";
     }
 }

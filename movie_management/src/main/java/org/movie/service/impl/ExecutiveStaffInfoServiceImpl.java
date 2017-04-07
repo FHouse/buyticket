@@ -53,4 +53,9 @@ public class ExecutiveStaffInfoServiceImpl implements ExecutiveStaffInfoService{
     public List<ExecutiveStaffInfo> findExecutiveStaffInfos() {
         return dao.findAll(ExecutiveStaffInfo.class);
     }
+
+    @Override
+    public List<ExecutiveStaffInfo> find() {
+        return dao.findExecutive();
+    }
 }

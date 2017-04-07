@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import org.movie.entity.Admin;
 import org.movie.exception.AdminException;
 import org.movie.service.inf.AdminService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -75,6 +76,9 @@ public class AdminAction {
     //查询所有管理员
     public String findAdmins(){
         list = service.findAdmins();
+        for (Admin admin:list) {
+            RelieveUtil.relieve(admin);
+        }
         return "success";
     }
 

@@ -39,4 +39,6 @@ public interface ExecutiveStaffInfoService{
      * @return
      */
     public List<ExecutiveStaffInfo> findExecutiveStaffInfos();
+
+    public List<ExecutiveStaffInfo> find();
 }

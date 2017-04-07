@@ -3,6 +3,7 @@ package org.movie.action;
 import org.movie.entity.ExecutiveStaffType;
 import org.movie.exception.ExecutiveStaffTypeException;
 import org.movie.service.inf.ExecutiveStaffTypeService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -70,6 +71,10 @@ public class ExecutiveStaffTypeAction {
     ///查询所有演职人员类型
     public String findExecutiveStaffTypes(){
         list = service.findExecutiveStaffTypes();
+        //解关系
+        for (ExecutiveStaffType type:list) {
+            RelieveUtil.relieve(type);
+        }
         return "success";
     }
 }

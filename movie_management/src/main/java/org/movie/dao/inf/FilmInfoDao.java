@@ -9,4 +9,10 @@ import java.util.List;
  */
 public interface FilmInfoDao extends BaseDao{
 
+    /**
+     * 根据电影名称查询电影信息
+     * @param filmInfo
+     * @return
+     */
+    public FilmInfo findFilmInfoByName(FilmInfo filmInfo);
 }

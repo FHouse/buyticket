@@ -3,6 +3,7 @@ package org.movie.action;
 import org.movie.entity.Users;
 import org.movie.exception.UsersException;
 import org.movie.service.inf.UsersService;
+import org.movie.util.RelieveUtil;
 import org.omg.CORBA.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -80,6 +81,9 @@ public class UsersAction {
     //查询所有用户
     public String findUsers(){
         list = service.findUsers();
+        for (Users user:list) {
+            RelieveUtil.relieve(user);
+        }
         return  "success";
     }
 }

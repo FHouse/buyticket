@@ -5,6 +5,7 @@ import org.movie.entity.FilmHouseUserInfo;
 import org.movie.exception.FilmHouseInfoException;
 import org.movie.exception.FilmHouseUserInfoException;
 import org.movie.service.inf.FilmHouseUserInfoService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -80,6 +81,9 @@ public class FilmHouseUserInfoAction {
     //查询所有影城用户
     public String findFilmHouseUsers(){
         list = service.findFilmHouseUsers();
+        for (FilmHouseUserInfo user:list) {
+            RelieveUtil.relieve(user);
+        }
         return "success";
     }
 
@@ -101,6 +105,9 @@ public class FilmHouseUserInfoAction {
     //根据影城id查询影城下所有用户信息
     public String findFilmHouseUserByFilmHouseId(){
         list = service.findFilmHouseUserByFilmHouseId(filmHouseUserInfo.getFilmHouseInfo());
+        for (FilmHouseUserInfo user:list) {
+            RelieveUtil.relieve(user);
+        }
         return "success";
     }
 }

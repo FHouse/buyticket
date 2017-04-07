@@ -20,4 +20,10 @@ public class ExecutiveStaffInfoDaoImpl extends BaseDaoImpl implements ExecutiveS
         query.setParameter(1,filmId);
         return query.getResultList();
     }
+
+    @Override
+    public List<ExecutiveStaffInfo> findExecutive() {
+        String jpql = "from ExecutiveStaffInfo e left join fetch e.filmInfo left join fetch e.executiveStaffTypes";
+        return em.createQuery(jpql).getResultList();
+    }
 }

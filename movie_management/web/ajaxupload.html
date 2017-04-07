@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#btn").on("click",function(){
+                //使用FormData来实现表单的封装和ajax上传
+                var formData = new FormData(document.getElementById("f1"));
+                //使用jquery的ajax提交表单
+                $.ajax({
+                    url : "addFilmInfo", //请求的url
+                    type : "post", //请求类型
+                    data : formData, //表单数据
+                    processData : false, //让Jquery不处理发送的数据
+                    contentType : false,  //让Jquery不设置Content-Type请求头
+                    success : function(result){ // 成功响应后的回调函数
+                        alert(result.message);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="msg"></div>
+<form id="f1" method="post" enctype="multipart/form-data">
+    <select name="filmInfo.filmYears.filmYearsId">
+        <option value="4e0c7e15-2f7f-46c4-a52f-9f6c532335b8">2015</option>
+        <option value="d2e65a6b-6dc1-4686-8338-a7c479cb3650">2017</option>
+    </select>
+    <select name="filmInfo.filmRegion.filmRegionId">
+        <option value="7d7cd3a5-2d4d-4611-b70d-894a4acdc035">中国</option>
+        <option value="828f0fa0-016a-449a-952d-44b5f55476ea">美国</option>
+    </select>
+    <input type="checkbox" name="filmInfo.filmTypes.filmTypeId" value="bcf2b254-a6b6-4e4d-a025-0869ff969559">动作
+    <input type="checkbox" name="filmInfo.filmTypes.filmTypeId" value="f0e8725b-7429-4051-9953-802a5de4674f">喜剧
+    FilmName:<input type="text" name="filmInfo.filmName" value="速度与激情"/>
+    filmIntroduce:<input type="text" name="filmInfo.filmIntroduce" value="好看"/>
+
+    File:<input type="file" name="uploadFile" /><br/>
+    <input id="btn" type="button" value="submit"/>
+</form>
+</body>
+</html>

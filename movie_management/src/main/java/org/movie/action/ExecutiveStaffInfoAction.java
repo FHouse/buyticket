@@ -1,8 +1,10 @@
 package org.movie.action;
 
+import com.google.gson.Gson;
 import org.movie.entity.ExecutiveStaffInfo;
 import org.movie.exception.ExecutiveStaffInfoException;
 import org.movie.service.inf.ExecutiveStaffInfoService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -86,6 +88,9 @@ public class ExecutiveStaffInfoAction {
     //查询所有演职人员
     public String findExecutiveStaffInfos(){
         list = service.findExecutiveStaffInfos();
+        for (ExecutiveStaffInfo es:list) {
+            RelieveUtil.relieve(es);
+        }
         return "success";
     }
 }

@@ -3,6 +3,7 @@ package org.movie.action;
 import org.movie.entity.Area;
 import org.movie.exception.AreaException;
 import org.movie.service.inf.AreaService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -55,12 +56,18 @@ public class AreaAction {
     //根据城市id查询该城市的所有区（县）
     public String findAreaByCityId(){
         list = service.findAreaByCityId(area.getCity());
+        for (Area area:list) {
+            RelieveUtil.relieve(area);
+        }
         return "success";
     }
 
     //查询所有的区（县）
     public String findAreas(){
         list = service.findAreas();
+        for (Area area:list) {
+            RelieveUtil.relieve(area);
+        }
         return "success";
     }
 
