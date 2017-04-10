@@ -62,7 +62,7 @@ public class FilmHouseInfo {
         this.ver = ver;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="areaid")
     public Area getArea() {
         return area;
@@ -71,13 +71,13 @@ public class FilmHouseInfo {
         this.area = area;
     }
 
-    @OneToMany(mappedBy = "filmHouseInfo")
+    @OneToMany(mappedBy = "filmHouseInfo",fetch = FetchType.LAZY)
     public Set<FilmHouseUserInfo> getFilmHouseUserInfos() {
         return filmHouseUserInfos;
     }
     public void setFilmHouseUserInfos(Set<FilmHouseUserInfo> filmHouseUserInfos) {this.filmHouseUserInfos = filmHouseUserInfos;}
 
-    @OneToMany(mappedBy = "filmHouseInfos")
+    @OneToMany(mappedBy = "filmHouseInfos",fetch = FetchType.LAZY)
     public Set<MovieHallInfo> getMovieHallInfos() {
         return movieHallInfos;
     }
@@ -85,7 +85,7 @@ public class FilmHouseInfo {
         this.movieHallInfos = movieHallInfos;
     }
 
-    @OneToMany(mappedBy = "filmHouseInfo")
+    @OneToMany(mappedBy = "filmHouseInfo",fetch = FetchType.LAZY)
     public Set<FilmHouseUserInfo> getFilmHouseUsers() {
         return filmHouseUsers;
     }
@@ -93,7 +93,7 @@ public class FilmHouseInfo {
         this.filmHouseUsers = filmHouseUsers;
     }
 
-    @OneToMany(mappedBy = "filmHouseInfos")
+    @OneToMany(mappedBy = "filmHouseInfos",fetch = FetchType.LAZY)
     public Set<MovieHallInfo> getMovieHalls() {
         return movieHalls;
     }

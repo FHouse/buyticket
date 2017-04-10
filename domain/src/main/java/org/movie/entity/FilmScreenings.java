@@ -49,7 +49,7 @@ public class FilmScreenings {
         this.filmPrice = filmPrice;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="moviehallinfoid")
     public MovieHallInfo getMovieHallInfo() {
         return movieHallInfo;
@@ -58,7 +58,7 @@ public class FilmScreenings {
         this.movieHallInfo = movieHallInfo;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="filminfoid")
     public FilmInfo getFilmInfo() {
         return filmInfo;
@@ -67,7 +67,7 @@ public class FilmScreenings {
         this.filmInfo = filmInfo;
     }
 
-    @OneToMany(mappedBy = "filmScreenings")
+    @OneToMany(mappedBy = "filmScreenings",fetch = FetchType.LAZY)
     public Set<OrderInfo> getOrders() {
         return orders;
     }

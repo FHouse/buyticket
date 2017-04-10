@@ -46,7 +46,7 @@ public class Area {
         this.ver = ver;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cityId")
     public City getCity() {
         return city;
@@ -55,7 +55,7 @@ public class Area {
         this.city = city;
     }
 
-    @OneToMany(mappedBy = "area")
+    @OneToMany(mappedBy = "area",fetch = FetchType.LAZY)
     public Set<FilmHouseInfo> getFilmHouses() {
         return filmHouses;
     }

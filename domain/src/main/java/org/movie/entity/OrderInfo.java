@@ -48,7 +48,7 @@ public class OrderInfo {
         this.orderTime = orderTime;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "filmscreenings")
     public FilmScreenings getFilmScreenings() {
         return filmScreenings;
@@ -57,7 +57,7 @@ public class OrderInfo {
         this.filmScreenings = filmScreenings;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usersid")
     public Users getUsers() {
         return users;
@@ -66,7 +66,7 @@ public class OrderInfo {
         this.users = users;
     }
 
-    @OneToMany(mappedBy = "orderInfo")
+    @OneToMany(mappedBy = "orderInfo",fetch = FetchType.LAZY)
     public Set<SeatNumber> getSeatNumbers() {
         return seatNumbers;
     }

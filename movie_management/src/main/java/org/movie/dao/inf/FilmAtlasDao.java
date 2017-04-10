@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface FilmAtlasDao extends BaseDao{
 
+    public List<FilmAtlas> findFilmAtlasByFilmId(FilmAtlas filmAtlas);
 }

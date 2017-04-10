@@ -74,7 +74,7 @@ public class Users {
         this.ver = ver;
     }
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
     public Set<CollectionInfo> getCollections() {
         return collections;
     }
@@ -82,7 +82,7 @@ public class Users {
         this.collections = collections;
     }
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
     public Set<FilmComment> getFilmComments() {
         return filmComments;
     }
@@ -90,7 +90,7 @@ public class Users {
         this.filmComments = filmComments;
     }
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
     public Set<OrderInfo> getOrders() {
         return orders;
     }

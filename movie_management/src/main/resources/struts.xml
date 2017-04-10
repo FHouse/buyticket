@@ -409,7 +409,7 @@
             </interceptor-stack>
         </interceptors>
 
-
+        <!-- 全局结果集 -->
         <global-results>
             <result name="success" type="json">message</result>
         </global-results>
@@ -420,6 +420,79 @@
             <exception-mapping exception="org.movie.exception.FilmInfoException" result="addException" />
             <result name="addException" type="json">
                 <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="updateFilmInfo" class="filmInfoAction" method="updateFilmInfo">
+            <exception-mapping exception="org.movie.exception.FilmInfoException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="findFilmInfoById" class="filmInfoAction" method="findFilmInfoById">
+            <exception-mapping exception="org.movie.exception.FilmInfoException" result="findException" />
+            <result name="findException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="findFilmInfos" class="filmInfoAction" method="findFilmInfos">
+            <exception-mapping exception="org.movie.exception.FilmInfoException" result="findsException" />
+            <result name="findsException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- 电影图集请求处理 -->
+    <package name="filmAtlas" extends="json-default">
+
+        <!-- 配置文件上传的拦截器 -->
+        <interceptors>
+            <interceptor-stack name="myStack">
+                <!-- 配置上传的拦截器 -->
+                <interceptor-ref name="fileUpload">
+                    <!-- 限制上传的文件类型 ,这里限制为只能上传各种图片类型-->
+                    <param name="allowedTypes">image/bmp,image/png,image/jpg</param>
+                    <!-- 限制上传文件大小（单位是字节） -->
+                    <param name="maximumSize">20480</param>
+                </interceptor-ref>
+                <!-- 引用默认的拦截器栈 -->
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" type="json">message</result>
+        </global-results>
+
+        <action name="addFilmAtlases" class="filmAtlasAction" method="addFilmAtlases">
+            <!-- 配置自定义拦截器栈 -->
+            <interceptor-ref name="myStack" />
+            <exception-mapping exception="org.movie.exception.FilmAtlasException" result="addException" />
+            <result name="addException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="deleteFilmAtlases" class="filmAtlasAction" method="deleteFilmAtlases">
+            <exception-mapping exception="org.movie.exception.FilmAtlasException" result="deleteException" />
+            <result name="deleteException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="findFilmAtlasByFilmId" class="filmAtlasAction" method="findFilmAtlasByFilmId">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+
+        <action name="findFilmAtlases" class="filmAtlasAction" method="findFilmAtlases">
+            <result type="json">
+                <param name="root">list</param>
             </result>
         </action>
     </package>

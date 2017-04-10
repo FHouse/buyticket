@@ -35,13 +35,13 @@ public class FilmInfo {
     //乐观锁版本号
     private int ver;
     //电影类型
-    private Set<FilmType> filmTypes;
+    private Set<FilmType> filmTypes = new HashSet<>();
     //电影年代
     private FilmYears filmYears;
     //电影地区
     private FilmRegion filmRegion;
     //电影上架状态
-    private String filmState;
+    private String filmState ="上架";
     //一对多关联想看记录
     private Set<CollectionInfo> collections = new HashSet<>();
     //一对多关联演职人员
@@ -141,7 +141,7 @@ public class FilmInfo {
         this.ver = ver;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="filmtype_filminfo",
             joinColumns=@JoinColumn(name="filminfoid"),
             inverseJoinColumns=@JoinColumn(name="filmtypeid"))
@@ -152,7 +152,7 @@ public class FilmInfo {
         this.filmTypes = filmTypes;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="filmyearsid")
     public FilmYears getFilmYears() {
         return filmYears;
@@ -161,7 +161,7 @@ public class FilmInfo {
         this.filmYears = filmYears;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="filmregionId")
     public FilmRegion getFilmRegion() {
         return filmRegion;
@@ -178,7 +178,7 @@ public class FilmInfo {
         this.filmState = filmState;
     }
 
-    @OneToMany(mappedBy = "filmInfo")
+    @OneToMany(mappedBy = "filmInfo",fetch = FetchType.LAZY)
     public Set<CollectionInfo> getCollections() {
         return collections;
     }
@@ -186,7 +186,7 @@ public class FilmInfo {
         this.collections = collections;
     }
 
-    @OneToMany(mappedBy = "filmInfo")
+    @OneToMany(mappedBy = "filmInfo",fetch = FetchType.LAZY)
     public Set<ExecutiveStaffInfo> getExecutiveStaffs() {
         return executiveStaffs;
     }
@@ -194,7 +194,7 @@ public class FilmInfo {
         this.executiveStaffs = executiveStaffs;
     }
 
-    @OneToMany(mappedBy = "filmInfo")
+    @OneToMany(mappedBy = "filmInfo",fetch = FetchType.LAZY)
     public Set<FilmAtlas> getFilmAtlases() {
         return filmAtlases;
     }
@@ -202,7 +202,7 @@ public class FilmInfo {
         this.filmAtlases = filmAtlases;
     }
 
-    @OneToMany(mappedBy = "filmInfo")
+    @OneToMany(mappedBy = "filmInfo",fetch = FetchType.LAZY)
     public Set<FilmComment> getFilmComments() {
         return filmComments;
     }
@@ -210,7 +210,7 @@ public class FilmInfo {
         this.filmComments = filmComments;
     }
 
-    @OneToMany(mappedBy = "filmInfo")
+    @OneToMany(mappedBy = "filmInfo",fetch = FetchType.LAZY)
     public Set<FilmScreenings> getFilmScreeningses() {
         return filmScreeningses;
     }

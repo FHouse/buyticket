@@ -42,7 +42,7 @@ public class City {
         this.ver = ver;
     }
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city",fetch = FetchType.LAZY)
     public Set<Area> getAreas() {
         return areas;
     }

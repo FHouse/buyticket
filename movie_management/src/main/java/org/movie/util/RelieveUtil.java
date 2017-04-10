@@ -3,15 +3,13 @@ package org.movie.util;
 import org.hibernate.LazyInitializationException;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 /**
- * Describe
+ * 双向关联关系解除工具类
  * Created by Wkz on 2017/3/31.
  */
 public class RelieveUtil {
@@ -44,8 +42,8 @@ public class RelieveUtil {
     }
 
     /**
-     * 关系解除
-     * @param targetObject 需要接关系的对象
+     * 解除双向关联关系
+     * @param targetObject 需要解关系的对象
      * @throws IllegalAccessException
      */
     public static void relieve(Object targetObject){
@@ -86,8 +84,9 @@ public class RelieveUtil {
                     }
                 }else{
                     try{
-                        System.out.println(field.get(targetObject)); //作为判断介质受用，无实际意义
-                        relieveOrdinary(field,targetObject,targetClazz);
+                        if(field.get(targetObject) != null){
+                            relieveOrdinary(field,targetObject,targetClazz);
+                        }
                     }catch(LazyInitializationException e){
                         field.set(targetObject,null);
                     }
