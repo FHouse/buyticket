@@ -2,6 +2,7 @@ package org.movie.service.impl;
 
 import org.movie.dao.inf.ExecutiveStaffInfoDao;
 import org.movie.entity.ExecutiveStaffInfo;
+import org.movie.entity.FilmInfo;
 import org.movie.service.inf.ExecutiveStaffInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +24,7 @@ public class ExecutiveStaffInfoServiceImpl extends BaseServiceImpl implements Ex
     private ExecutiveStaffInfoDao dao;
 
     @Override
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfos() {
-        return dao.findAll(ExecutiveStaffInfo.class);
+    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmInfo) {
+        return dao.findExecutiveStaffInfoByFilmId(filmInfo);
     }
 }

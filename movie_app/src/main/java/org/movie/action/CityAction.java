@@ -2,6 +2,7 @@ package org.movie.action;
 
 import org.movie.entity.City;
 import org.movie.service.inf.CityService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class CityAction {
     //查询所有城市信息
     public String findCitys(){
         list = service.findCitys();
+        for (City city:list) {
+            RelieveUtil.relieve(city);
+        }
         return "success";
     }
 }
