@@ -2,6 +2,7 @@ package org.movie.action;
 
 import org.movie.entity.FilmYears;
 import org.movie.service.inf.FilmYearsService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -33,6 +34,9 @@ public class FilmYearsAction {
     //查询所有电影年代
     public String findFilmYeras(){
         list = service.findFilmYears();
+        for (FilmYears filmYears:list){
+            RelieveUtil.relieve(filmYears);
+        }
         return "success";
     }
 }

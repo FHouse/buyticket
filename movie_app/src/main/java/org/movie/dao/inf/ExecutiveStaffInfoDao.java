@@ -1,6 +1,7 @@
 package org.movie.dao.inf;
 
 import org.movie.entity.ExecutiveStaffInfo;
+import org.movie.entity.FilmInfo;
 
 import java.util.List;
 
@@ -9,5 +10,5 @@ import java.util.List;
  */
 public interface ExecutiveStaffInfoDao extends BaseDao{
 
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(String filmId);
+    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmId);
 }

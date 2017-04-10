@@ -41,7 +41,7 @@
                 <param name="root">list</param>
             </result>
         </action>
-        <action name="findExecutiveStaffInfos" class="executiveStaffInfoAction" method="findExecutiveStaffInfos">
+        <action name="findExecutiveStaffInfoByFilmId" class="executiveStaffInfoAction" method="findExecutiveStaffInfoByFilmId">
             <result type="json">
                 <param name="root">list</param>
             </result>

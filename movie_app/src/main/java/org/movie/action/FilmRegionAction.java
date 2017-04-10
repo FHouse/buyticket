@@ -2,6 +2,7 @@ package org.movie.action;
 
 import org.movie.entity.FilmRegion;
 import org.movie.service.inf.FilmRegionService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -33,6 +34,9 @@ public class FilmRegionAction {
     //查询所有年代
     public String findFilmRegions(){
         list = service.findFilmRegions();
+        for (FilmRegion filmRegion:list){
+            RelieveUtil.relieve(filmRegion);
+        }
         return "success";
     }
 }

@@ -2,6 +2,7 @@ package org.movie.action;
 
 import org.movie.entity.Users;
 import org.movie.service.inf.UsersService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -70,6 +71,9 @@ public class UsersAction {
     //查询指定用户
     public String findUserByUserName(){
         list = service.findUserByUserName(users.getUserName());
+        for(Users users:list){
+            RelieveUtil.relieve(users);
+        }
         return  "success";
     }
 }

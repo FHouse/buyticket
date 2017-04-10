@@ -2,6 +2,7 @@ package org.movie.action;
 
 import org.movie.entity.ExecutiveStaffType;
 import org.movie.service.inf.ExecutiveStaffTypeService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -40,6 +41,9 @@ public class ExecutiveStaffTypeAction {
 
     public String findExecutiveStaffTypes(){
         list = service.findExecutiveStaffTypes();
+        for (ExecutiveStaffType executiveStaffType:list){
+            RelieveUtil.relieve(executiveStaffType);
+        }
         return "success";
     }
 }

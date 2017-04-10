@@ -2,6 +2,7 @@ package org.movie.action;
 
 import org.movie.entity.ExecutiveStaffInfo;
 import org.movie.service.inf.ExecutiveStaffInfoService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -20,6 +21,7 @@ public class ExecutiveStaffInfoAction {
     @Qualifier("executiveStaffInfoService")
     private ExecutiveStaffInfoService service;
 
+    private ExecutiveStaffInfo executiveStaffInfo;
     private List<ExecutiveStaffInfo> list;
 
     public List<ExecutiveStaffInfo> getList() {
@@ -30,8 +32,11 @@ public class ExecutiveStaffInfoAction {
         this.list = list;
     }
 
-    public String findExecutiveStaffInfos(){
-        list = service.findExecutiveStaffInfos();
+    public String findExecutiveStaffInfoByFilmId(){
+        list = service.findExecutiveStaffInfoByFilmId(executiveStaffInfo.getFilmInfo());
+        for (ExecutiveStaffInfo executiveStaffInfo:list) {
+            RelieveUtil.relieve(executiveStaffInfo);
+        }
         return "success";
     }
 }

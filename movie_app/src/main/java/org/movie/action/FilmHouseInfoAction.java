@@ -2,6 +2,7 @@ package org.movie.action;
 
 import org.movie.entity.FilmHouseInfo;
 import org.movie.service.inf.FilmHouseInfoService;
+import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -42,6 +43,9 @@ public class FilmHouseInfoAction {
     //根据地区信息查询该区域所有的影城
     public String findFilmHouseInfoByAreaId(){
         list = service.findFilmHouseInfoByAreaId(filmHouseInfo.getArea());
+        for (FilmHouseInfo filmHouseInfo:list){
+            RelieveUtil.relieve(filmHouseInfo);
+        }
         return "success";
     }
 }
