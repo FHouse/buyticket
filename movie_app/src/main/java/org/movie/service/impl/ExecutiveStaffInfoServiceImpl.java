@@ -24,7 +24,7 @@ public class ExecutiveStaffInfoServiceImpl extends BaseServiceImpl implements Ex
     private ExecutiveStaffInfoDao dao;
 
     @Override
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmId) {
-        return dao.findExecutiveStaffInfoByFilmId(filmId);
+    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmInfo) {
+        return dao.findExecutiveStaffInfoByFilmId(filmInfo);
     }
 }

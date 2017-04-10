@@ -9,5 +9,5 @@ import java.util.List;
  * Created by admin on 2017/3/14.
  */
 public interface ExecutiveStaffInfoService{
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmId);
+    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmInfo);
 }

@@ -1,11 +1,15 @@
 package org.movie.service.impl;
 
 import org.movie.dao.inf.FilmAtlasDao;
+import org.movie.entity.FilmAtlas;
+import org.movie.entity.FilmInfo;
 import org.movie.service.inf.FilmAtlasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by admin on 2017/3/14.
@@ -17,4 +21,9 @@ public class FilmAtlasServiceImpl extends BaseServiceImpl implements FilmAtlasSe
     @Autowired
     @Qualifier("filmAtlasDao")
     private FilmAtlasDao dao;
+
+    @Override
+    public List<FilmAtlas> findFilmAtlasByFilmId(FilmInfo filmInfo) {
+        return dao.findFilmAtlasByFilmId(filmInfo);
+    }
 }

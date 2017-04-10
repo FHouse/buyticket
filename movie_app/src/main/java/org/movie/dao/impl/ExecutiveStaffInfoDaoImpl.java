@@ -15,10 +15,10 @@ import java.util.List;
 public class ExecutiveStaffInfoDaoImpl extends BaseDaoImpl implements ExecutiveStaffInfoDao {
 
     @Override
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmId) {
+    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmInfo) {
         String jpql = "from ExecutiveStaffInfo e where e.filmInfo.filmId = ?1";
         Query query = em.createQuery(jpql);
-        query.setParameter(1,filmId);
+        query.setParameter(1,filmInfo.getFilmId());
         return query.getResultList();
     }
 }
