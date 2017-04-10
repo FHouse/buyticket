@@ -47,6 +47,7 @@ public class FilmAtlasServiceImpl implements FilmAtlasService{
     @Override
     public void deleteFilmAtlas(Set<FilmAtlas> atlasSet) {
         for (FilmAtlas f:atlasSet) {
+            f = (FilmAtlas) dao.findById(FilmAtlas.class,f.getFilmAtlasId());
             dao.delete(f);
         }
     }

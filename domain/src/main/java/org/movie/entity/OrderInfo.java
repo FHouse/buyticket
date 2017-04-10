@@ -17,6 +17,8 @@ public class OrderInfo {
     private String paymentState = "未支付";
     //下单时间
     private Date orderTime;
+    //乐观锁版本号
+    private int ver = 1;
     //下单电影的场次
     private FilmScreenings filmScreenings;
     //下单的人
@@ -48,8 +50,16 @@ public class OrderInfo {
         this.orderTime = orderTime;
     }
 
+    @Column
+    public int getVer() {
+        return ver;
+    }
+    public void setVer(int ver) {
+        this.ver = ver;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "filmscreenings")
+    @JoinColumn(name = "filmScreeningsId")
     public FilmScreenings getFilmScreenings() {
         return filmScreenings;
     }

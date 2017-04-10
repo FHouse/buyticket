@@ -1,6 +1,7 @@
 package org.movie.dao.impl;
 
 import org.movie.dao.inf.BaseDao;
+import org.movie.entity.FilmComment;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -27,7 +28,8 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public void delete(T t) {
-        em.remove(em.merge(t));
+        //em.remove(em.merge(t));
+        em.remove(t);
     }
 
     @Override

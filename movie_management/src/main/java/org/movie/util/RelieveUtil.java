@@ -14,6 +14,7 @@ import java.util.Set;
  */
 public class RelieveUtil {
 
+    //定义一个list集合，存放java常用类型
     private static List<Class<?>> list = new ArrayList<>();
 
     static {

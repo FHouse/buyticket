@@ -45,7 +45,7 @@ public class FilmComment {
         this.commentTime = commentTime;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="usersid")
     public Users getUsers() {
         return users;
