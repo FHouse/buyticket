@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service( "orderInfoService" )
 @Transactional
-public class OrderInfoServiceImpl extends BaseServiceImpl implements OrderInfoService{
+public class OrderInfoServiceImpl implements OrderInfoService{
     //注入dao
     @Autowired
     @Qualifier("orderInfoDao")

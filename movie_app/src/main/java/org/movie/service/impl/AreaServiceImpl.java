@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service( "areaService" )
 @Transactional
-public class AreaServiceImpl extends BaseServiceImpl implements AreaService{
+public class AreaServiceImpl implements AreaService{
 
     //注入dao
     @Autowired

@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service( "executiveStaffTypeService" )
 @Transactional
-public class ExecutiveStaffTypeServiceImpl extends BaseServiceImpl implements ExecutiveStaffTypeService{
+public class ExecutiveStaffTypeServiceImpl implements ExecutiveStaffTypeService{
 
     //注入dao
     @Autowired

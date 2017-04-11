@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service( "filmCommentService" )
 @Transactional
-public class FilmCommentServiceImpl extends BaseServiceImpl implements FilmCommentService{
+public class FilmCommentServiceImpl implements FilmCommentService{
     //注入dao
     @Autowired
     @Qualifier("filmCommentDao")

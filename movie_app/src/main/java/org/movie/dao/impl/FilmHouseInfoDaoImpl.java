@@ -21,4 +21,12 @@ public class FilmHouseInfoDaoImpl extends BaseDaoImpl implements FilmHouseInfoDa
         query.setParameter(1,area.getAreaId());
         return query.getResultList();
     }
+
+    @Override
+    public FilmHouseInfo findFilmHouseInfoByFilmHouseName(FilmHouseInfo filmHouseInfo) {
+        String jpql = "from FilmHouseInfo f where f.filmHouseName = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1,filmHouseInfo.getFilmHouseName());
+        return (FilmHouseInfo) query.getSingleResult();
+    }
 }

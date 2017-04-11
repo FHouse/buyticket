@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service( "executiveStaffInfoService" )
 @Transactional
-public class ExecutiveStaffInfoServiceImpl extends BaseServiceImpl implements ExecutiveStaffInfoService{
+public class ExecutiveStaffInfoServiceImpl implements ExecutiveStaffInfoService{
 
     //注入dao
     @Autowired
@@ -24,7 +24,7 @@ public class ExecutiveStaffInfoServiceImpl extends BaseServiceImpl implements Ex
     private ExecutiveStaffInfoDao dao;
 
     @Override
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(FilmInfo filmInfo) {
-        return dao.findExecutiveStaffInfoByFilmId(filmInfo);
+    public List<ExecutiveStaffInfo> findExecutiveStaffInfoByFilmId(ExecutiveStaffInfo executiveStaffInfo) {
+        return dao.findExecutiveStaffInfoByFilmId(executiveStaffInfo);
     }
 }
