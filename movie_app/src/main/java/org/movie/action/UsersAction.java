@@ -63,18 +63,16 @@ public class UsersAction {
     //修改用户
     public String updateUser(){
         try {
-            service.updataUser(users);
-            message = "修改成功！";
+            service.updateUser(users);
+            return "success";
         } catch (Exception e) {
-            e.printStackTrace();
-            message = "该用户信息已被修改，请刷新后重试！";
+            throw new UsersException("该用户信息已被修改，请刷新后重试！");
         }
-        return "success";
     }
 
     //查询指定用户
     public String findUserByUserName(){
-        list = service.findUserByUserName(users.getUserName());
+        list = service.findUserByUserName(users);
         for(Users users:list){
             RelieveUtil.relieve(users);
         }
