@@ -1,6 +1,7 @@
 package org.movie.action;
 
 import org.movie.entity.Users;
+import org.movie.exception.UsersException;
 import org.movie.service.inf.UsersService;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,11 @@ public class UsersAction {
 
     //添加用户
     public String addUser(){
-        message = service.addUser(users);
-        return "success";
+        if(service.addUser(users)){
+            return "success";
+        }else{
+            throw new UsersException("添加失败！");
+        }
     }
 
     //修改用户

@@ -39,6 +39,7 @@ public class ExecutiveStaffTypeAction {
         this.list = list;
     }
 
+    //查询所有演职人员的类型
     public String findExecutiveStaffTypes(){
         list = service.findExecutiveStaffTypes();
         for (ExecutiveStaffType executiveStaffType:list){

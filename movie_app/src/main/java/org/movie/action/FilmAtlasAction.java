@@ -38,6 +38,7 @@ public class FilmAtlasAction {
     public void setList(List<FilmAtlas> list) {
         this.list = list;
     }
+    //根据电影查询电影图集
     public String findFilmAtlasByCityId(){
         list = service.findFilmAtlasByFilmId(filmAtlas);
         for (FilmAtlas filmAtlas:list) {
