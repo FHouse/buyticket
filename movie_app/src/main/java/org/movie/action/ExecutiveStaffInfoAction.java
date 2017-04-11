@@ -32,8 +32,9 @@ public class ExecutiveStaffInfoAction {
         this.list = list;
     }
 
+    //查询指定电影下的演职人员
     public String findExecutiveStaffInfoByFilmId(){
-        list = service.findExecutiveStaffInfoByFilmId(executiveStaffInfo.getFilmInfo());
+        list = service.findExecutiveStaffInfoByFilmId(executiveStaffInfo);
         for (ExecutiveStaffInfo executiveStaffInfo:list) {
             RelieveUtil.relieve(executiveStaffInfo);
         }

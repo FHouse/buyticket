@@ -51,5 +51,10 @@
                 <param name="root">list</param>
             </result>
         </action>
+        <action name="findFilmAtlasByCityId" class="filmAtlasAction" method="findFilmAtlasByCityId">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
     </package>
 </struts>

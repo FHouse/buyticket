@@ -2,7 +2,6 @@ package org.movie.service.impl;
 
 import org.movie.dao.inf.FilmAtlasDao;
 import org.movie.entity.FilmAtlas;
-import org.movie.entity.FilmInfo;
 import org.movie.service.inf.FilmAtlasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,14 +15,14 @@ import java.util.List;
  */
 @Service( "filmAtlasService" )
 @Transactional
-public class FilmAtlasServiceImpl extends BaseServiceImpl implements FilmAtlasService{
+public class FilmAtlasServiceImpl implements FilmAtlasService{
     //注入dao
     @Autowired
     @Qualifier("filmAtlasDao")
     private FilmAtlasDao dao;
 
     @Override
-    public List<FilmAtlas> findFilmAtlasByFilmId(FilmInfo filmInfo) {
-        return dao.findFilmAtlasByFilmId(filmInfo);
+    public List<FilmAtlas> findFilmAtlasByFilmId(FilmAtlas filmAtlas) {
+        return dao.findFilmAtlasByFilmId(filmAtlas);
     }
 }

@@ -1,6 +1,7 @@
 package org.movie.action;
 
 import org.movie.entity.Users;
+import org.movie.exception.UsersException;
 import org.movie.service.inf.UsersService;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,25 +53,26 @@ public class UsersAction {
 
     //添加用户
     public String addUser(){
-        message = service.addUser(users);
-        return "success";
+        if(service.addUser(users)){
+            return "success";
+        }else{
+            throw new UsersException("添加失败！");
+        }
     }
 
     //修改用户
     public String updateUser(){
         try {
-            service.updataUser(users);
-            message = "修改成功！";
+            service.updateUser(users);
+            return "success";
         } catch (Exception e) {
-            e.printStackTrace();
-            message = "该用户信息已被修改，请刷新后重试！";
+            throw new UsersException("该用户信息已被修改，请刷新后重试！");
         }
-        return "success";
     }
 
     //查询指定用户
     public String findUserByUserName(){
-        list = service.findUserByUserName(users.getUserName());
+        list = service.findUserByUserName(users);
         for(Users users:list){
             RelieveUtil.relieve(users);
         }

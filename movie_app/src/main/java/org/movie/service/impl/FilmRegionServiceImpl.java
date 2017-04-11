@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service( "filmRegionService" )
 @Transactional
-public class FilmRegionServiceImpl extends BaseServiceImpl implements FilmRegionService{
+public class FilmRegionServiceImpl implements FilmRegionService{
     //注入dao
     @Autowired
     @Qualifier("filmRegionDao")

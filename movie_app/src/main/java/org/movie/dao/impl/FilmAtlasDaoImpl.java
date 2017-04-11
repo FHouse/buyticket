@@ -13,12 +13,11 @@ import java.util.List;
  */
 @Repository("filmAtlasDao")
 public class FilmAtlasDaoImpl extends BaseDaoImpl implements FilmAtlasDao{
-
     @Override
-    public List<FilmAtlas> findFilmAtlasByFilmId(FilmInfo filmInfo) {
-        String jpql = "from FilmAtlas e where e.filmInfo.filmId = ?1";
+    public List<FilmAtlas> findFilmAtlasByFilmId(FilmAtlas filmAtlas) {
+        String jpql = "from FilmAtlas a where a.filmInfo.filmId = ?1";
         Query query = em.createQuery(jpql);
-        query.setParameter(1,filmInfo.getFilmId());
+        query.setParameter(1,filmAtlas.getFilmInfo().getFilmId());
         return query.getResultList();
     }
 }

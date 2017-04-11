@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service( "cityService" )
 @Transactional
-public class CityServiceImpl extends BaseServiceImpl implements CityService{
+public class CityServiceImpl implements CityService{
 
     //注入城市dao
     @Autowired
@@ -24,6 +24,6 @@ public class CityServiceImpl extends BaseServiceImpl implements CityService{
 
     @Override
     public List<City> findCitys() {
-        return findAll(City.class);
+        return dao.findAll(City.class);
     }
 }

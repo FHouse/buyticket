@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface FilmHouseInfoDao extends BaseDao{
     public List<FilmHouseInfo> findFilmHouseInfoByAreaId(Area area);
+    public FilmHouseInfo findFilmHouseInfoByFilmHouseName(FilmHouseInfo filmHouseInfo);
 }

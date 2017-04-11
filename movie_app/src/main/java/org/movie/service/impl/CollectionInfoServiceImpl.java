@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service( "collectionInfoService" )
 @Transactional
-public class CollectionInfoServiceImpl extends BaseServiceImpl implements CollectionInfoService{
+public class CollectionInfoServiceImpl implements CollectionInfoService{
 
     //注入dao
     @Autowired

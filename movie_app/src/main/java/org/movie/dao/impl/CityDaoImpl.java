@@ -18,4 +18,11 @@ public class CityDaoImpl extends BaseDaoImpl implements CityDao{
         query.setParameter(1,cityId);
         return (City)query.getSingleResult();
     }
+    @Override
+    public City findCityByCityName(City city) {
+        String jpql = "from City c where c.cityName = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1,city.getCityName());
+        return (City) query.getSingleResult();
+    }
 }
