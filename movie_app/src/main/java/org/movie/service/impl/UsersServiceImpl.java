@@ -44,7 +44,7 @@ public class UsersServiceImpl implements UsersService{
     }
 
     @Override
-    public List<Users> findUsers() {
-        return dao.findAll(Users.class);
+    public List<Users> findUserByUserName(Users users) {
+        return dao.findUserByUserName(users);
     }
 }
