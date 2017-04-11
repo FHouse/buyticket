@@ -496,4 +496,55 @@
             </result>
         </action>
     </package>
+
+    <!-- 电影评论请求处理 -->
+    <package name="filmComment" extends="json-default">
+
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" type="json">message</result>
+        </global-results>
+
+        <action name="deleteFilmComment" class="filmCommentAction" method="deleteFilmComment">
+            <exception-mapping exception="org.movie.exception.FilmCommentException" result="deleteException" />
+            <result name="deleteException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="findFilmCommentByFilmId" class="filmCommentAction" method="findFilmCommentByFilmId">
+            <result name="success" type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+
+    </package>
+
+    <!-- 订单请求处理 -->
+    <package name="orderInfo" extends="json-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <result name="success" type="json">message</result>
+        </global-results>
+
+        <action name="updateOrderInfo" class="orderInfoAction" method="updateOrderInfo">
+            <exception-mapping exception="org.movie.exception.OrderInfoException" result="updateException" />
+            <result name="updateException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+        <action name="deleteOrderInfo" class="orderInfoAction" method="deleteOrderInfo">
+            <exception-mapping exception="org.movie.exception.OrderInfoException" result="deleteException" />
+            <result name="deleteException" type="json">
+                <param name="root">exception</param>
+            </result>
+        </action>
+
+       <action name="findOrderInfoByFilmId" class="orderInfoAction" method="findOrderInfoByFilmId">
+           <result type="json">
+               <param name="root">list</param>
+           </result>
+       </action>
+    </package>
 </struts>

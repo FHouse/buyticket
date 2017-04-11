@@ -38,6 +38,7 @@ public class ExecutiveStaffInfoServiceImpl implements ExecutiveStaffInfoService{
     @Override
     public void deleteExecutiveStaffInfoByFilmID(String filmId) {
         for (ExecutiveStaffInfo e:dao.findExecutiveStaffInfoByFilmId(filmId)) {
+            e = (ExecutiveStaffInfo) dao.findById(ExecutiveStaffInfo.class,e.getExecutiveStaffInfoId());
             dao.delete(e);
         }
     }

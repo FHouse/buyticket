@@ -39,6 +39,7 @@ public class FilmHouseUserInfoServiceImpl implements FilmHouseUserInfoService{
 
     @Override
     public void deleteFilmHouseUser(FilmHouseUserInfo filmHouseUserInfo) {
+        filmHouseUserInfo = (FilmHouseUserInfo) dao.findById(FilmHouseUserInfo.class,filmHouseUserInfo.getFilmHouseUserId());
         dao.delete(filmHouseUserInfo);
     }
 
