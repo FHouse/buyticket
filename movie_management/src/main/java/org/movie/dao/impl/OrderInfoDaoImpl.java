@@ -21,4 +21,12 @@ public class OrderInfoDaoImpl extends BaseDaoImpl implements OrderInfoDao{
         query.setParameter(1,filmInfo.getFilmId());
         return query.getResultList();
     }
+
+    @Override
+    public OrderInfo findOrderInfoById(OrderInfo orderInfo) {
+        String jpql = "from OrderInfo o left join fetch o.seatNumbers where o.orderInfoId = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1,orderInfo.getOrderInfoId());
+        return (OrderInfo) query.getSingleResult();
+    }
 }

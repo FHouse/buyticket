@@ -4,6 +4,7 @@ import org.movie.dao.inf.ExecutiveStaffTypeDao;
 import org.movie.dao.inf.OrderInfoDao;
 import org.movie.entity.FilmInfo;
 import org.movie.entity.OrderInfo;
+import org.movie.entity.SeatNumber;
 import org.movie.service.inf.OrderInfoService;
 import org.movie.util.CheckVer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,10 @@ public class OrderInfoServiceImpl implements OrderInfoService{
 
     @Override
     public void deleteOrderInfo(OrderInfo orderInfo) {
-        orderInfo = (OrderInfo) dao.findById(OrderInfo.class,orderInfo.getOrderInfoId());
+        orderInfo = dao.findOrderInfoById(orderInfo);
+        for (SeatNumber s:orderInfo.getSeatNumbers()) {
+            dao.delete(s);
+        }
         dao.delete(orderInfo);
     }
 

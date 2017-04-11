@@ -1,5 +1,6 @@
 package org.movie.dao.inf;
 
+import org.hibernate.criterion.Order;
 import org.movie.entity.FilmInfo;
 import org.movie.entity.OrderInfo;
 
@@ -16,4 +17,11 @@ public interface OrderInfoDao extends BaseDao{
      * @return
      */
     public List<OrderInfo> findOrderInfoByFilmId(FilmInfo filmInfo);
+
+    /**
+     * 根据订单id查询该订单的信息
+     * @param orderInfo
+     * @return
+     */
+    public OrderInfo findOrderInfoById(OrderInfo orderInfo);
 }

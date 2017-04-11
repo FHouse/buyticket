@@ -21,7 +21,7 @@ public interface ExecutiveStaffTypeService{
      * @param executiveStaffType
      * @return
      */
-    public String deleteExecutiveStaffType(ExecutiveStaffType executiveStaffType);
+    public void deleteExecutiveStaffType(ExecutiveStaffType executiveStaffType);
 
     /**
      * 修改演职人员类型

@@ -13,4 +13,11 @@ public interface UsersDao extends BaseDao{
      * @return
      */
     public Users findUserByUserName(Users users);
+
+    /**
+     * 根据用户id查询用户信息
+     * @param users
+     * @return
+     */
+    public Users findUserById(Users users);
 }

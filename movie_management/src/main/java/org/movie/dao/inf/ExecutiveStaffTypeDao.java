@@ -14,4 +14,11 @@ public interface ExecutiveStaffTypeDao extends BaseDao{
      * @return
      */
     public ExecutiveStaffType findESTypeByName(ExecutiveStaffType executiveStaffType);
+
+    /**
+     * 根据id查询演职人员类型
+     * @param type
+     * @return
+     */
+    public ExecutiveStaffType findESTypeById(ExecutiveStaffType type);
 }

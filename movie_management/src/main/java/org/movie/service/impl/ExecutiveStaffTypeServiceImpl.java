@@ -1,6 +1,7 @@
 package org.movie.service.impl;
 
 import org.movie.dao.inf.ExecutiveStaffTypeDao;
+import org.movie.entity.ExecutiveStaffInfo;
 import org.movie.entity.ExecutiveStaffType;
 import org.movie.service.inf.ExecutiveStaffTypeService;
 import org.movie.util.CheckVer;
@@ -37,9 +38,12 @@ public class ExecutiveStaffTypeServiceImpl implements ExecutiveStaffTypeService{
     }
 
     @Override
-    public String deleteExecutiveStaffType(ExecutiveStaffType executiveStaffType) {
-        //暂未完成
-        return null;
+    public void deleteExecutiveStaffType(ExecutiveStaffType executiveStaffType) {
+        executiveStaffType = (ExecutiveStaffType) dao.findById(ExecutiveStaffType.class,executiveStaffType.getExecutiveStaffTypeId());
+        /*for (ExecutiveStaffInfo e:executiveStaffType.getExecutiveStaffs()) {
+            dao.delete(e);
+        }*/
+        dao.delete(executiveStaffType);
     }
 
     @Override

@@ -20,4 +20,12 @@ public class ExecutiveStaffTypeDaoImpl extends BaseDaoImpl implements ExecutiveS
         query.setParameter(1,executiveStaffType.getTypeName());
         return (ExecutiveStaffType) query.getSingleResult();
     }
+
+    @Override
+    public ExecutiveStaffType findESTypeById(ExecutiveStaffType type) {
+        String jpql = "from ExecutiveStaffType e left join fetch e.executiveStaffs where e.executiveStaffTypeId = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1,type.getExecutiveStaffTypeId());
+        return (ExecutiveStaffType) query.getSingleResult();
+    }
 }

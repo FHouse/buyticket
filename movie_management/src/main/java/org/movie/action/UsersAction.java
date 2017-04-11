@@ -62,10 +62,14 @@ public class UsersAction {
         }
     }
 
-    //删除用户（暂未实现）
+    //删除用户
     public String deleteUser(){
-        service.deleteUser(users);
-        return "success";
+        try{
+            service.deleteUser(users);
+            return "success";
+        }catch(Exception e){
+            throw new UsersException("删除失败！");
+        }
     }
 
     //修改用户

@@ -51,10 +51,14 @@ public class ExecutiveStaffTypeAction {
         throw new ExecutiveStaffTypeException("该演职人员类型已存在");
     }
 
-    //删除演职人员类型(暂未完成)
+    //删除演职人员类型
     public String deleteExecutiveStaffType(){
-        service.deleteExecutiveStaffType(type);
-        return "success";
+        try{
+            service.deleteExecutiveStaffType(type);
+            return "success";
+        }catch(Exception e){
+            throw new ExecutiveStaffTypeException("删除失败！");
+        }
     }
 
     //修改演职人员类型
