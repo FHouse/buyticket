@@ -15,7 +15,7 @@ import java.util.List;
 public class FilmAtlasDaoImpl extends BaseDaoImpl implements FilmAtlasDao{
 
     @Override
-    public List<FilmAtlas> findFilmAtlasByFilmId(FilmInfo filmInfo) {
+    public List<FilmAtlas> findFilmAtlasByFilmId(FilmAtlas filmAtlas) {
         String jpql = "from FilmAtlas e where e.filmInfo.filmId = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1,filmInfo.getFilmId());

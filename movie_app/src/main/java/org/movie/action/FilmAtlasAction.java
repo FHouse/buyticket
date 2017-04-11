@@ -39,7 +39,7 @@ public class FilmAtlasAction {
         this.list = list;
     }
     public String findFilmAtlasByCityId(){
-        list = service.findFilmAtlasByFilmId(filmAtlas.getFilmInfo());
+        list = service.findFilmAtlasByFilmId(filmAtlas);
         for (FilmAtlas filmAtlas:list) {
             RelieveUtil.relieve(filmAtlas);
         }
