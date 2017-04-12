@@ -1,5 +1,8 @@
 package org.movie.dao.inf;
 
+import org.movie.entity.FilmType;
+import org.movie.util.PageBean;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -41,4 +44,11 @@ public interface BaseDao<T> {
      */
     public List<T> findAll(Class<T> entityClass);
 
+    /**
+     * 分页查询
+     * @param pageBean
+     * @param entityClass
+     * @return
+     */
+    public PageBean findAll(PageBean pageBean, Class<?> entityClass);
 }

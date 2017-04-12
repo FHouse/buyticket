@@ -6,6 +6,7 @@ import org.movie.entity.Area;
 import org.movie.entity.FilmHouseInfo;
 import org.movie.service.inf.FilmHouseInfoService;
 import org.movie.util.CheckVer;
+import org.movie.util.PageBean;
 import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -44,13 +45,13 @@ public class FilmHouseInfoServiceImpl implements FilmHouseInfoService{
     }
 
     @Override
-    public List<FilmHouseInfo> findFilmHouseInfos() {
-        return dao.findAll(FilmHouseInfo.class);
+    public PageBean findFilmHouseInfos(PageBean pageBean) {
+        return dao.findAll(pageBean,FilmHouseInfo.class);
     }
 
     @Override
-    public List<FilmHouseInfo> findFilmHouseInfoByAreaId(Area area) {
-        return dao.findFilmHouseInfoByAreaId(area);
+    public PageBean findFilmHouseInfoByAreaId(PageBean pageBean,Area area) {
+        return dao.findFilmHouseInfoByAreaId(pageBean,area);
     }
 
     @Override

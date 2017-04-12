@@ -2,6 +2,7 @@ package org.movie.service.inf;
 
 import org.movie.entity.FilmInfo;
 import org.movie.entity.OrderInfo;
+import org.movie.util.PageBean;
 
 import java.util.List;
 
@@ -26,5 +27,5 @@ public interface OrderInfoService{
      * 根据电影id查询订单
      * @param filmInfo
      */
-    public List<OrderInfo> findOrderInfoByFilmId(FilmInfo filmInfo);
+    public PageBean findOrderInfoByFilmId(PageBean pageBean,FilmInfo filmInfo);
 }

@@ -1,6 +1,7 @@
 package org.movie.service.inf;
 
 import org.movie.entity.FilmAtlas;
+import org.movie.util.PageBean;
 
 import java.util.List;
 import java.util.Set;
@@ -42,14 +43,16 @@ public interface FilmAtlasService{
 
     /**
      * 查询所有图集
+     * @param pageBean
      * @return
      */
-    public List<FilmAtlas> findFilmAtlases();
+    public PageBean findFilmAtlases(PageBean pageBean);
 
     /**
      * 根据电影id查询该电影所有的图集
+     * @param pageBean
      * @param filmAtlas
      * @return
      */
-    public List<FilmAtlas> findFilmAtlasByFilmId(FilmAtlas filmAtlas);
+    public PageBean findFilmAtlasByFilmId(PageBean pageBean,FilmAtlas filmAtlas);
 }

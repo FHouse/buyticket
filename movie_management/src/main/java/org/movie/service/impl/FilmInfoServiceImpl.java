@@ -5,6 +5,7 @@ import org.movie.dao.inf.FilmInfoDao;
 import org.movie.entity.FilmInfo;
 import org.movie.service.inf.FilmInfoService;
 import org.movie.util.CheckVer;
+import org.movie.util.PageBean;
 import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -44,8 +45,8 @@ public class FilmInfoServiceImpl implements FilmInfoService{
     }
 
     @Override
-    public List<FilmInfo> findFilmInfos() {
-        return dao.findAll(FilmInfo.class);
+    public PageBean findFilmInfos(PageBean pageBean) {
+        return dao.findAll(pageBean,FilmInfo.class);
     }
 
     @Override

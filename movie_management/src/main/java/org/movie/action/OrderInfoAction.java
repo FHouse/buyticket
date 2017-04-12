@@ -3,6 +3,7 @@ package org.movie.action;
 import org.movie.entity.OrderInfo;
 import org.movie.exception.OrderInfoException;
 import org.movie.service.inf.OrderInfoService;
+import org.movie.util.PageBean;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +26,7 @@ public class OrderInfoAction {
     private OrderInfoService service;
 
     private OrderInfo orderInfo;
-    private List<OrderInfo> list;
+    private PageBean pageBean;
     private String message;
 
     public OrderInfo getOrderInfo() {
@@ -36,12 +37,12 @@ public class OrderInfoAction {
         this.orderInfo = orderInfo;
     }
 
-    public List<OrderInfo> getList() {
-        return list;
+    public PageBean getPageBean() {
+        return pageBean;
     }
 
-    public void setList(List<OrderInfo> list) {
-        this.list = list;
+    public void setPageBean(PageBean pageBean) {
+        this.pageBean = pageBean;
     }
 
     public String getMessage() {
@@ -74,8 +75,8 @@ public class OrderInfoAction {
 
     //根据电影id查询该电影下的所有订单
     public String findOrderInfoByFilmId(){
-        list = service.findOrderInfoByFilmId(orderInfo.getFilmScreenings().getFilmInfo());
-        for (OrderInfo o:list) {
+        pageBean = service.findOrderInfoByFilmId(pageBean,orderInfo.getFilmScreenings().getFilmInfo());
+        for (Object o:pageBean.getList()) {
             RelieveUtil.relieve(o);
         }
         return "success";

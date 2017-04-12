@@ -2,6 +2,7 @@ package org.movie.dao.inf;
 
 import org.movie.entity.Area;
 import org.movie.entity.FilmHouseInfo;
+import org.movie.util.PageBean;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface FilmHouseInfoDao extends BaseDao{
      * @param area 需要查询的区（县）信息
      * @return 返回该区域内的所有影城的信息的集合
      */
-    public List<FilmHouseInfo> findFilmHouseInfoByAreaId(Area area);
+    public PageBean findFilmHouseInfoByAreaId(PageBean pageBean,Area area);
 
     /**
      * 根据区（县）id删除该区域内的所有影城

@@ -2,6 +2,8 @@ package org.movie.dao.impl;
 
 import org.movie.dao.inf.ExecutiveStaffInfoDao;
 import org.movie.entity.ExecutiveStaffInfo;
+import org.movie.entity.FilmInfo;
+import org.movie.util.PageBean;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
@@ -22,8 +24,15 @@ public class ExecutiveStaffInfoDaoImpl extends BaseDaoImpl implements ExecutiveS
     }
 
     @Override
-    public List<ExecutiveStaffInfo> findExecutive() {
-        String jpql = "from ExecutiveStaffInfo e left join fetch e.filmInfo left join fetch e.executiveStaffTypes";
-        return em.createQuery(jpql).getResultList();
+    public PageBean findExecutiveStaffInfoByFilmId(PageBean pageBean, FilmInfo filmInfo) {
+        String jpql = "from ExecutiveStaffInfo e where e.filmInfo.filmId = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1,filmInfo.getFilmId());
+        pageBean.setRowCount(query.getResultList().size());
+        query.setFirstResult(pageBean.getFirstResult());
+        query.setMaxResults(pageBean.getMaxResult());
+        pageBean.setList(query.getResultList());
+        return pageBean;
     }
+
 }

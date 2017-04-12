@@ -1,6 +1,7 @@
 package org.movie.service.inf;
 
 import org.movie.entity.FilmInfo;
+import org.movie.util.PageBean;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface FilmInfoService{
      * 查询所有的电影信息
      * @return
      */
-    public List<FilmInfo> findFilmInfos();
+    public PageBean findFilmInfos(PageBean pageBean);
 
     /**
      *根据电影id查询电影信息

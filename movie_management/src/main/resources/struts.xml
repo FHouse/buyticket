@@ -77,7 +77,7 @@
     <package name="filmHouseInfo" extends="json-default">
         <!-- 全局结果集 -->
         <global-results>
-            <result name="success" />
+            <result name="success" type="json">message</result>
         </global-results>
 
         <action name="addFilmHouseInfo" class="filmHouseInfoAction" method="addFilmHouseInfo">
@@ -89,7 +89,7 @@
 
         <action name="findFilmHouseInfos" class="filmHouseInfoAction" method="findFilmHouseInfos">
             <result type="json">
-                <param name="root">list</param>
+                <param name="root">pageBean</param>
             </result>
         </action>
 
@@ -99,7 +99,7 @@
 
         <action name="findFilmHouseInfoByAreaId" class="filmHouseInfoAction" method="findFilmHouseInfoByAreaId">
             <result type="json">
-                <param name="root">list</param>
+                <param name="root">pageBean</param>
             </result>
         </action>
 
@@ -115,7 +115,7 @@
     <package name="filmHouseUserInfo" extends="json-default">
         <!-- 全局结果集 -->
         <global-results>
-            <result name="success" />
+            <result name="success" type="json">message</result>
         </global-results>
 
         <action name="addFilmHouseUser" class="filmHouseUserInfoAction" method="addFilmHouseUser">
@@ -131,7 +131,7 @@
 
         <action name="findFilmHouseUsers" class="filmHouseUserInfoAction" method="findFilmHouseUsers">
             <result type="json">
-                <param name="root">list</param>
+                <param name="root">pageBean</param>
             </result>
         </action>
 
@@ -244,7 +244,7 @@
     <package name="admin" extends="json-default">
         <!-- 全局结果集 -->
         <global-results>
-            <result name="success" />
+            <result name="success" type="json">message</result>
         </global-results>
 
         <action name="addAdmin" class="adminAction" method="addAdmin">
@@ -270,7 +270,7 @@
 
         <action name="findAdmins" class="adminAction" method="findAdmins">
             <result type="json">
-                <param name="root">list</param>
+                <param name="root">pageBean</param>
             </result>
         </action>
 
@@ -353,7 +353,7 @@
     <package name="executiveStaffInfo" extends="json-default">
         <!-- 全局结果集 -->
         <global-results>
-            <result name="success" />
+            <result name="success" type="json">message</result>
         </global-results>
 
         <action name="addExecutiveStaff" class="executiveStaffInfoAction" method="addExecutiveStaffInfo">
@@ -386,7 +386,13 @@
 
         <action name="findExecutiveStaffs" class="executiveStaffInfoAction" method="findExecutiveStaffInfos">
             <result type="json">
-                <param name="root">list</param>
+                <param name="root">pageBean</param>
+            </result>
+        </action>
+
+        <action name="findExecutiveStaffByFilmId" class="executiveStaffInfoAction" method="deleteExecutiveStaffInfoByFilmId">
+            <result type="json">
+                <param name="root">pageBean</param>
             </result>
         </action>
     </package>
@@ -431,16 +437,14 @@
         </action>
 
         <action name="findFilmInfoById" class="filmInfoAction" method="findFilmInfoById">
-            <exception-mapping exception="org.movie.exception.FilmInfoException" result="findException" />
-            <result name="findException" type="json">
-                <param name="root">exception</param>
+            <result type="json">
+                <param name="root">filmInfo</param>
             </result>
         </action>
 
         <action name="findFilmInfos" class="filmInfoAction" method="findFilmInfos">
-            <exception-mapping exception="org.movie.exception.FilmInfoException" result="findsException" />
-            <result name="findsException" type="json">
-                <param name="root">exception</param>
+            <result type="json">
+                <param name="root">pageBean</param>
             </result>
         </action>
     </package>
@@ -486,13 +490,13 @@
 
         <action name="findFilmAtlasByFilmId" class="filmAtlasAction" method="findFilmAtlasByFilmId">
             <result type="json">
-                <param name="root">list</param>
+                <param name="root">pageBean</param>
             </result>
         </action>
 
         <action name="findFilmAtlases" class="filmAtlasAction" method="findFilmAtlases">
             <result type="json">
-                <param name="root">list</param>
+                <param name="root">pageBean</param>
             </result>
         </action>
     </package>

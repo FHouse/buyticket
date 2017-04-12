@@ -5,6 +5,7 @@ import org.movie.entity.Admin;
 import org.movie.exception.AdminException;
 import org.movie.service.inf.AdminService;
 import org.movie.util.CheckVer;
+import org.movie.util.PageBean;
 import org.movie.util.ThisTime;
 import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,8 +54,8 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public List<Admin> findAdmins() {
-        return dao.findAll(Admin.class);
+    public PageBean findAdmins(PageBean pageBean) {
+        return dao.findAll(pageBean,Admin.class);
     }
 
     @Override

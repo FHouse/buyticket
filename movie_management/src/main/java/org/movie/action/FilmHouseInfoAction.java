@@ -3,6 +3,7 @@ package org.movie.action;
 import org.movie.entity.FilmHouseInfo;
 import org.movie.exception.FilmHouseInfoException;
 import org.movie.service.inf.FilmHouseInfoService;
+import org.movie.util.PageBean;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,8 +25,8 @@ public class FilmHouseInfoAction {
     private FilmHouseInfoService service;
 
     private FilmHouseInfo filmHouseInfo;
-    private String message;
-    private List<FilmHouseInfo> list;
+    private String message = "success";
+    private PageBean pageBean;
 
     public FilmHouseInfo getFilmHouseInfo() {
         return filmHouseInfo;
@@ -43,12 +44,12 @@ public class FilmHouseInfoAction {
         this.message = message;
     }
 
-    public List<FilmHouseInfo> getList() {
-        return list;
+    public PageBean getPageBean() {
+        return pageBean;
     }
 
-    public void setList(List<FilmHouseInfo> list) {
-        this.list = list;
+    public void setPageBean(PageBean pageBean) {
+        this.pageBean = pageBean;
     }
 
     //添加影城
@@ -68,18 +69,18 @@ public class FilmHouseInfoAction {
 
     //查询所有的影城
     public String findFilmHouseInfos(){
-        list = service.findFilmHouseInfos();
-        for (FilmHouseInfo filmHouse:list) {
-            RelieveUtil.relieve(filmHouse);
+        pageBean = service.findFilmHouseInfos(pageBean);
+        for (Object o:pageBean.getList()) {
+            RelieveUtil.relieve(o);
         }
         return "success";
     }
 
     //根据地区信息查询该区域所有的影城
     public String findFilmHouseInfoByAreaId(){
-        list = service.findFilmHouseInfoByAreaId(filmHouseInfo.getArea());
-        for (FilmHouseInfo filmHouse:list) {
-            RelieveUtil.relieve(filmHouse);
+        pageBean = service.findFilmHouseInfoByAreaId(pageBean,filmHouseInfo.getArea());
+        for (Object o:pageBean.getList()) {
+            RelieveUtil.relieve(o);
         }
         return "success";
     }

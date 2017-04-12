@@ -1,6 +1,8 @@
 package org.movie.service.inf;
 
 import org.movie.entity.ExecutiveStaffInfo;
+import org.movie.entity.FilmInfo;
+import org.movie.util.PageBean;
 
 import java.util.List;
 
@@ -38,7 +40,13 @@ public interface ExecutiveStaffInfoService{
      * 查询所有的演职人员
      * @return
      */
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfos();
+    public PageBean findExecutiveStaffInfos(PageBean pageBean);
 
-    public List<ExecutiveStaffInfo> find();
+    /**
+     * 根据电影的id查询该电影下的所有的演职人员信息
+     * @param pageBean
+     * @param filmInfo
+     * @return
+     */
+    public PageBean findExecutiveStaffInfoByFilmId(PageBean pageBean, FilmInfo filmInfo);
 }

@@ -7,6 +7,7 @@ import org.movie.entity.OrderInfo;
 import org.movie.entity.SeatNumber;
 import org.movie.service.inf.OrderInfoService;
 import org.movie.util.CheckVer;
+import org.movie.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class OrderInfoServiceImpl implements OrderInfoService{
     }
 
     @Override
-    public List<OrderInfo> findOrderInfoByFilmId(FilmInfo filmInfo) {
-        return dao.findOrderInfoByFilmId(filmInfo);
+    public PageBean findOrderInfoByFilmId(PageBean pageBean,FilmInfo filmInfo) {
+        return dao.findOrderInfoByFilmId(pageBean,filmInfo);
     }
 }

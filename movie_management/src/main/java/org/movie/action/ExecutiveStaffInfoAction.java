@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.movie.entity.ExecutiveStaffInfo;
 import org.movie.exception.ExecutiveStaffInfoException;
 import org.movie.service.inf.ExecutiveStaffInfoService;
+import org.movie.util.PageBean;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,7 +27,7 @@ public class ExecutiveStaffInfoAction {
     private ExecutiveStaffInfoService service;
 
     private ExecutiveStaffInfo executiveStaffInfo;
-    private List<ExecutiveStaffInfo> list;
+    private PageBean pageBean;
 
     public ExecutiveStaffInfo getExecutiveStaffInfo() {
         return executiveStaffInfo;
@@ -36,12 +37,12 @@ public class ExecutiveStaffInfoAction {
         this.executiveStaffInfo = executiveStaffInfo;
     }
 
-    public List<ExecutiveStaffInfo> getList() {
-        return list;
+    public PageBean getPageBean() {
+        return pageBean;
     }
 
-    public void setList(List<ExecutiveStaffInfo> list) {
-        this.list = list;
+    public void setPageBean(PageBean pageBean) {
+        this.pageBean = pageBean;
     }
 
     //添加演职人员
@@ -87,9 +88,18 @@ public class ExecutiveStaffInfoAction {
 
     //查询所有演职人员
     public String findExecutiveStaffInfos(){
-        list = service.findExecutiveStaffInfos();
-        for (ExecutiveStaffInfo es:list) {
-            RelieveUtil.relieve(es);
+        pageBean = service.findExecutiveStaffInfos(pageBean);
+        for (Object o:pageBean.getList()) {
+            RelieveUtil.relieve(o);
+        }
+        return "success";
+    }
+
+    //根据电影id查询该电影下的所有的演职人员信息
+    public String FindExecutiveStaffInfoByFilmId(){
+        pageBean = service.findExecutiveStaffInfoByFilmId(pageBean,executiveStaffInfo.getFilmInfo());
+        for (Object o:pageBean.getList()) {
+            RelieveUtil.relieve(o);
         }
         return "success";
     }

@@ -2,6 +2,7 @@ package org.movie.dao.impl;
 
 import org.movie.dao.inf.BaseDao;
 import org.movie.entity.FilmComment;
+import org.movie.util.PageBean;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -48,4 +49,14 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         return em.createQuery(jpql).getResultList();
     }
 
+    @Override
+    public PageBean findAll(PageBean pageBean, Class<?> entityClass) {
+        String jpql = "from "+entityClass.getName();
+        Query query = em.createQuery(jpql);
+        query.setFirstResult(pageBean.getFirstResult());
+        query.setMaxResults(pageBean.getMaxResult());
+        pageBean.setRowCount(query.getResultList().size());
+        pageBean.setList(query.getResultList());
+        return pageBean;
+    }
 }

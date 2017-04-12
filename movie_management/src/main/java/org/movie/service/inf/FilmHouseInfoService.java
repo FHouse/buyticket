@@ -2,6 +2,7 @@ package org.movie.service.inf;
 
 import org.movie.entity.Area;
 import org.movie.entity.FilmHouseInfo;
+import org.movie.util.PageBean;
 
 import java.util.List;
 
@@ -27,14 +28,14 @@ public interface FilmHouseInfoService{
      * 查询所有的影城信息
      * @return 返回所有影城信息的集合
      */
-    public List<FilmHouseInfo> findFilmHouseInfos();
+    public PageBean findFilmHouseInfos(PageBean pageBean);
 
     /**
      * 根据区（县）信息查询该区域内的影城
      * @param area 区（县）信息
      * @return 返回该区域所有的影城的信息集合
      */
-    public List<FilmHouseInfo> findFilmHouseInfoByAreaId(Area area);
+    public PageBean findFilmHouseInfoByAreaId(PageBean pageBean,Area area);
 
     /**
      * 修改影城信息

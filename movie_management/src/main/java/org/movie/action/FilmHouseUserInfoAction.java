@@ -5,6 +5,7 @@ import org.movie.entity.FilmHouseUserInfo;
 import org.movie.exception.FilmHouseInfoException;
 import org.movie.exception.FilmHouseUserInfoException;
 import org.movie.service.inf.FilmHouseUserInfoService;
+import org.movie.util.PageBean;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,6 +30,7 @@ public class FilmHouseUserInfoAction {
     private FilmHouseUserInfo filmHouseUserInfo;
     private String message;
     private List<FilmHouseUserInfo> list;
+    private PageBean pageBean;
 
     public FilmHouseUserInfo getFilmHouseUserInfo() {
         return filmHouseUserInfo;
@@ -49,6 +51,13 @@ public class FilmHouseUserInfoAction {
     }
     public void setList(List<FilmHouseUserInfo> list) {
         this.list = list;
+    }
+
+    public PageBean getPageBean() {
+        return pageBean;
+    }
+    public void setPageBean(PageBean pageBean) {
+        this.pageBean = pageBean;
     }
 
     //添加影城用户
@@ -80,9 +89,9 @@ public class FilmHouseUserInfoAction {
 
     //查询所有影城用户
     public String findFilmHouseUsers(){
-        list = service.findFilmHouseUsers();
-        for (FilmHouseUserInfo user:list) {
-            RelieveUtil.relieve(user);
+        pageBean = service.findFilmHouseUsers(pageBean);
+        for (Object o:pageBean.getList()) {
+            RelieveUtil.relieve(o);
         }
         return "success";
     }

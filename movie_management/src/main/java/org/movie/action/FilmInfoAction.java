@@ -5,6 +5,7 @@ import org.apache.struts2.ServletActionContext;
 import org.movie.entity.FilmInfo;
 import org.movie.exception.FilmInfoException;
 import org.movie.service.inf.FilmInfoService;
+import org.movie.util.PageBean;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,7 +30,8 @@ public class FilmInfoAction {
     private FilmInfoService service;
 
     private FilmInfo filmInfo;
-    private List<FilmInfo> list;//表单文件,必须是一个File类型
+    private PageBean pageBean;
+    //表单文件,必须是一个File类型
     private File uploadFile;
     //上传的文件名,格式必须是File名称 + FileName
     private String uploadFileFileName;
@@ -45,12 +47,12 @@ public class FilmInfoAction {
         this.filmInfo = filmInfo;
     }
 
-    public List<FilmInfo> getList() {
-        return list;
+    public PageBean getPageBean() {
+        return pageBean;
     }
 
-    public void setList(List<FilmInfo> list) {
-        this.list = list;
+    public void setPageBean(PageBean pageBean) {
+        this.pageBean = pageBean;
     }
 
     public File getUploadFile() {
@@ -132,9 +134,9 @@ public class FilmInfoAction {
 
     //查询所有电影信息
     public String findFilmInfos(){
-        list = service.findFilmInfos();
-        for (FilmInfo film:list) {
-            RelieveUtil.relieve(film);
+        pageBean = service.findFilmInfos(pageBean);
+        for (Object o:pageBean.getList()) {
+            RelieveUtil.relieve(o);
         }
         return "success";
     }

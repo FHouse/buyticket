@@ -1,6 +1,7 @@
 package org.movie.service.inf;
 
 import org.movie.entity.Admin;
+import org.movie.util.PageBean;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public interface AdminService{
      * 查询所有管理员
      * @return
      */
-    public List<Admin> findAdmins();
+    public PageBean findAdmins(PageBean pageBean);
 
     /**
      * 管理员登陆

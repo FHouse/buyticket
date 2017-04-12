@@ -2,6 +2,7 @@ package org.movie.service.inf;
 
 import org.movie.entity.FilmHouseInfo;
 import org.movie.entity.FilmHouseUserInfo;
+import org.movie.util.PageBean;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface FilmHouseUserInfoService{
      *查询所有影城用户信息
      * @return 返回所有影城用户信息集合
      */
-    public List<FilmHouseUserInfo> findFilmHouseUsers();
+    public PageBean findFilmHouseUsers(PageBean pageBean);
 
     /**
      * 修改影城用户信息

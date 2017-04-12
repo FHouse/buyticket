@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import org.movie.entity.Admin;
 import org.movie.exception.AdminException;
 import org.movie.service.inf.AdminService;
+import org.movie.util.PageBean;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,7 +27,8 @@ public class AdminAction {
     private AdminService service;
 
     private Admin admin;
-    private List<Admin> list;
+    private PageBean pageBean;
+    private String message = "success";
 
     public Admin getAdmin() {
         return admin;
@@ -36,12 +38,20 @@ public class AdminAction {
         this.admin = admin;
     }
 
-    public List<Admin> getList() {
-        return list;
+    public PageBean getPageBean() {
+        return pageBean;
     }
 
-    public void setList(List<Admin> list) {
-        this.list = list;
+    public void setPageBean(PageBean pageBean) {
+        this.pageBean = pageBean;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     //添加管理员
@@ -69,15 +79,15 @@ public class AdminAction {
             service.updateAdmin(admin);
             return "success";
         } catch (Exception e) {
-            throw new AdminException("该数据已被修改，请刷新后重试！");
+            throw new AdminException("修改失败，请刷新后重试！");
         }
     }
 
     //查询所有管理员
     public String findAdmins(){
-        list = service.findAdmins();
-        for (Admin admin:list) {
-            RelieveUtil.relieve(admin);
+        pageBean = service.findAdmins(pageBean);
+        for (Object o:pageBean.getList()) {
+            RelieveUtil.relieve(o);
         }
         return "success";
     }

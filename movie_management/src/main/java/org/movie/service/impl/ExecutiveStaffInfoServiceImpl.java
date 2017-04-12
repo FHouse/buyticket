@@ -2,8 +2,10 @@ package org.movie.service.impl;
 
 import org.movie.dao.inf.ExecutiveStaffInfoDao;
 import org.movie.entity.ExecutiveStaffInfo;
+import org.movie.entity.FilmInfo;
 import org.movie.service.inf.ExecutiveStaffInfoService;
 import org.movie.util.CheckVer;
+import org.movie.util.PageBean;
 import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -51,12 +53,13 @@ public class ExecutiveStaffInfoServiceImpl implements ExecutiveStaffInfoService{
     }
 
     @Override
-    public List<ExecutiveStaffInfo> findExecutiveStaffInfos() {
-        return dao.findAll(ExecutiveStaffInfo.class);
+    public PageBean findExecutiveStaffInfos(PageBean pageBean) {
+        return dao.findAll(pageBean,ExecutiveStaffInfo.class);
     }
 
     @Override
-    public List<ExecutiveStaffInfo> find() {
-        return dao.findExecutive();
+    public PageBean findExecutiveStaffInfoByFilmId(PageBean pageBean, FilmInfo filmInfo) {
+        return dao.findExecutiveStaffInfoByFilmId(pageBean,filmInfo);
     }
+
 }

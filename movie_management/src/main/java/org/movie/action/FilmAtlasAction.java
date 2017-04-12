@@ -5,6 +5,7 @@ import org.apache.struts2.ServletActionContext;
 import org.movie.entity.FilmAtlas;
 import org.movie.exception.FilmAtlasException;
 import org.movie.service.inf.FilmAtlasService;
+import org.movie.util.PageBean;
 import org.movie.util.RelieveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,7 +32,7 @@ public class FilmAtlasAction {
     private FilmAtlasService service;
 
     private FilmAtlas filmAtlas;
-    private List<FilmAtlas> list;
+    private PageBean pageBean;
     private String message = "success";
     private Set<FilmAtlas> filmAtlases;
     //表单文件，必须是一个File类型
@@ -49,12 +50,12 @@ public class FilmAtlasAction {
         this.filmAtlas = filmAtlas;
     }
 
-    public List<FilmAtlas> getList() {
-        return list;
+    public PageBean getPageBean() {
+        return pageBean;
     }
 
-    public void setList(List<FilmAtlas> list) {
-        this.list = list;
+    public void setPageBean(PageBean pageBean) {
+        this.pageBean = pageBean;
     }
 
     public String getMessage() {
@@ -151,18 +152,18 @@ public class FilmAtlasAction {
 
     //查询所有图集
     public String findFilmAtlases(){
-        list = service.findFilmAtlases();
-        for (FilmAtlas atlas:list) {
-            RelieveUtil.relieve(atlas);
+        pageBean = service.findFilmAtlases(pageBean);
+        for (Object o:pageBean.getList()) {
+            RelieveUtil.relieve(o);
         }
         return "success";
     }
 
     //根据电影id查询该电影的所有图集
     public String findFilmAtlasByFilmId(){
-        list = service.findFilmAtlasByFilmId(filmAtlas);
-        for (FilmAtlas atlas:list) {
-            RelieveUtil.relieve(atlas);
+        pageBean = service.findFilmAtlasByFilmId(pageBean,filmAtlas);
+        for (Object o: pageBean.getList()) {
+            RelieveUtil.relieve(o);
         }
         return "success";
     }

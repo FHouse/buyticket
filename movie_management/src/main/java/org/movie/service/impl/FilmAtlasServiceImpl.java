@@ -5,6 +5,7 @@ import org.movie.dao.inf.FilmAtlasDao;
 import org.movie.entity.FilmAtlas;
 import org.movie.service.inf.FilmAtlasService;
 import org.movie.util.CheckVer;
+import org.movie.util.PageBean;
 import org.movie.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -60,12 +61,12 @@ public class FilmAtlasServiceImpl implements FilmAtlasService{
     }
 
     @Override
-    public List<FilmAtlas> findFilmAtlases() {
-        return dao.findAll(FilmAtlas.class);
+    public PageBean findFilmAtlases(PageBean pageBean) {
+        return dao.findAll(pageBean,FilmAtlas.class);
     }
 
     @Override
-    public List<FilmAtlas> findFilmAtlasByFilmId(FilmAtlas filmAtlas) {
-        return dao.findFilmAtlasByFilmId(filmAtlas);
+    public PageBean findFilmAtlasByFilmId(PageBean pageBean,FilmAtlas filmAtlas) {
+        return dao.findFilmAtlasByFilmId(pageBean,filmAtlas);
     }
 }
